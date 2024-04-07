@@ -1,0 +1,29 @@
+/* Set text size to 18 for all labels and buttons */
+QLabel, QPushButton {
+    font-size: 16px;
+    font-family: "Atkinson Hyperlegible Regular";
+    font-size: 16px; /* Set text size to 18 for all labels and buttons */
+}
+
+/* Add padding to buttons */
+QPushButton {
+    padding: 10px;
+}
+
+/* Set font family and size for the search bar */
+QLineEdit#fld_searchBar {
+    font-family: "Atkinson Hyperlegible Regular"; /* Assuming you want to use the same font as other elements */
+    font-size: 16px;
+    padding-left: 10px;
+}
+
+/* Increase the height of the search bar */
+QLineEdit#fld_searchBar {
+    height: 40px; /* Adjust the height according to your preference */
+}
+
+QFrame#divider {
+    border: 1px solid black;  /* Set border to create a line */
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
