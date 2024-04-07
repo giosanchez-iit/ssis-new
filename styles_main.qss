@@ -11,14 +11,14 @@ QPushButton {
 }
 
 /* Set font family and size for the search bar */
-QLineEdit#fld_searchBar {
+QLineEdit{
     font-family: "Atkinson Hyperlegible Regular"; /* Assuming you want to use the same font as other elements */
     font-size: 16px;
     padding-left: 10px;
 }
 
 /* Increase the height of the search bar */
-QLineEdit#fld_searchBar {
+QLineEdit{
     height: 40px; /* Adjust the height according to your preference */
 }
 
@@ -26,4 +26,25 @@ QFrame#divider {
     border: 1px solid black;  /* Set border to create a line */
     padding-top: 10px;
     padding-bottom: 10px;
+}
+
+QLineEdit[class="text-field"] {
+    font-size: 16px;
+    font-family: "Atkinson Hyperlegible Regular";
+    padding-left: 10px; /* Add left padding to mimic the search bar */
+    height: 40px; /* Increase the height of the text fields */
+}
+
+/* Add padding to buttons */
+QPushButton {
+    font-size: 16px;
+    font-family: "Atkinson Hyperlegible Regular";
+    padding: 10px;
+}
+
+/* Set font size and family for combo boxes */
+QComboBox {
+    font-size: 16px;
+    font-family: "Atkinson Hyperlegible Regular";
+    height: 40px; /* Increase the height of the combo boxes */
 }

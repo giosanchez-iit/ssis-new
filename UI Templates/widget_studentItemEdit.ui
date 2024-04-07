@@ -6,15 +6,15 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>710</width>
-    <height>72</height>
+    <width>729</width>
+    <height>86</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Form</string>
   </property>
   <layout class="QGridLayout" name="gridLayout">
-   <item row="0" column="1">
+   <item row="0" column="0">
     <layout class="QHBoxLayout" name="horizontalLayout" stretch="2,5,2,2,2,2,2,2">
      <item>
       <widget class="QLabel" name="lbl_idNum">
@@ -24,55 +24,30 @@
       </widget>
      </item>
      <item>
-      <widget class="QLabel" name="lbl_fullName">
+      <widget class="QLineEdit" name="fld_fullName">
        <property name="text">
         <string>Gio Kiefer A. Sanchez</string>
        </property>
       </widget>
      </item>
      <item>
-      <widget class="QLabel" name="lbl_course">
-       <property name="text">
-        <string>BSCS</string>
-       </property>
-      </widget>
+      <widget class="QComboBox" name="cbb_course"/>
      </item>
      <item>
-      <widget class="QLabel" name="lbl_year">
-       <property name="text">
-        <string>2</string>
-       </property>
-      </widget>
+      <widget class="QComboBox" name="cbb_yrLvl"/>
      </item>
      <item>
-      <widget class="QLabel" name="lbl_gender">
-       <property name="text">
-        <string>Man</string>
-       </property>
-      </widget>
+      <widget class="QComboBox" name="cbb_gender"/>
      </item>
      <item>
       <widget class="QLabel" name="lbl_status">
        <property name="text">
-        <string>Not Enrolled</string>
+        <string>Enrolled</string>
        </property>
       </widget>
      </item>
      <item>
-      <widget class="QPushButton" name="btn_edit">
-       <property name="sizePolicy">
-        <sizepolicy hsizetype="Ignored" vsizetype="Minimum">
-         <horstretch>2</horstretch>
-         <verstretch>0</verstretch>
-        </sizepolicy>
-       </property>
-       <property name="text">
-        <string>Edit</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QPushButton" name="btn_delete">
+      <widget class="QPushButton" name="btn_save">
        <property name="sizePolicy">
         <sizepolicy hsizetype="Ignored" vsizetype="Minimum">
          <horstretch>0</horstretch>
@@ -80,7 +55,20 @@
         </sizepolicy>
        </property>
        <property name="text">
-        <string>Delete</string>
+        <string>Save</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="btn_cancel">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Ignored" vsizetype="Minimum">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="text">
+        <string>Cancel</string>
        </property>
       </widget>
      </item>

@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>855</width>
+    <width>626</width>
     <height>454</height>
    </rect>
   </property>
@@ -62,7 +62,14 @@
        </layout>
       </item>
       <item>
-       <layout class="QHBoxLayout" name="horizontalLayout_2" stretch="3,5,2,2,2,4">
+       <widget class="Line" name="divider">
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <layout class="QHBoxLayout" name="horizontalLayout_2" stretch="3,5,2,2,2,2,4">
         <property name="leftMargin">
          <number>11</number>
         </property>
@@ -105,6 +112,13 @@
          </widget>
         </item>
         <item>
+         <widget class="QLabel" name="lbl_hdr_status">
+          <property name="text">
+           <string>Status</string>
+          </property>
+         </widget>
+        </item>
+        <item>
          <spacer name="horizontalSpacer_3">
           <property name="orientation">
            <enum>Qt::Horizontal</enum>
@@ -129,8 +143,8 @@
           <rect>
            <x>0</x>
            <y>0</y>
-           <width>833</width>
-           <height>322</height>
+           <width>604</width>
+           <height>313</height>
           </rect>
          </property>
         </widget>

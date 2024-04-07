@@ -5,6 +5,8 @@ from PyQt5.QtWidgets import QApplication, QMainWindow, QFrame, QWidget, QGridLay
 from PyQt5.QtCore import Qt, QRect, QCoreApplication, QMetaObject
 from widget_studentItem import Ui_StudentItem
 from crud_utils import CRUD_Data
+from widget_studentItemCreate import Ui_StudentCreate
+from PyQt5.QtWidgets import QScrollArea
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
@@ -12,7 +14,7 @@ class Ui_MainWindow(object):
         if not MainWindow.objectName():
             MainWindow.setObjectName(u"MainWindow")
         MainWindow.resize(626, 454)
-        MainWindow.setMinimumSize(800, 400)
+        MainWindow.setMinimumSize(840, 420)
         self.centralwidget = QWidget(MainWindow)
         self.centralwidget.setObjectName(u"centralwidget")
         self.gridLayout = QGridLayout(self.centralwidget)
@@ -144,10 +146,7 @@ class Ui_MainWindow(object):
         self.listStudents()
         
         # Buttons
-        self.btn_addStudent.clicked.connect(self.addStudentWindow)
-
-    def addStudentWindow(self):
-        print("ADD ME")
+        self.btn_addStudent.clicked.connect(self.addClicked)
         
     def loadStylesheet(self):
         style_sheet_file = QFile("styles_main.qss")  # Path to your QSS file
@@ -206,6 +205,42 @@ class Ui_MainWindow(object):
     def deleteClicked(self, id_number):
         self.CRUD_Student.delete(id_number)
         self.listStudents()
+        
+    def addClicked(self):
+        # Create an instance of Ui_StudentCreate
+        student_create_widget = QtWidgets.QWidget()
+        student_create_ui = Ui_StudentCreate()
+        student_create_ui.setupUi(student_create_widget)
+        
+        student_create_ui.btn_save.clicked.connect(lambda: self.saveClicked(student_create_ui))
+        # Add the widget to the vertical layout
+        self.scroll_contents_layout.addWidget(student_create_widget)
+        
+        QtCore.QTimer.singleShot(100, self.scrollToBottom)        
+        
+    def scrollToBottom(self):
+        scroll_bar = self.scrollArea.verticalScrollBar()
+        scroll_bar.setValue(scroll_bar.maximum())
+        
+    def saveClicked(self, student_create_ui):
+        # Get the contents of all fields and combo boxes
+        id_number = student_create_ui.fld_idNum.text()
+        full_name = student_create_ui.fld_fullName.text()
+        course = student_create_ui.cbb_course.currentText()
+        year_level = student_create_ui.cbb_yrLvl.currentText()
+        gender = student_create_ui.cbb_gender.currentText()
+
+        # Call a method with the retrieved contents as parameters
+        self.saveStudentData(id_number, full_name, course, year_level, gender)
+    
+    def saveStudentData(self, id_number, full_name, course, year_level, gender):
+        # Implement your logic here for saving student data
+        print("Saving student data:")
+        print("ID Number:", id_number)
+        print("Full Name:", full_name)
+        print("Course:", course)
+        print("Year Level:", year_level)
+        print("Gender:", gender)
 
 
 if __name__ == "__main__":
