@@ -1,12 +1,15 @@
 # -*- coding: utf-8 -*-
+import csv
 from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtCore import QFile, QTextStream
 from PyQt5.QtWidgets import QApplication, QMainWindow, QFrame, QWidget, QGridLayout, QVBoxLayout, QHBoxLayout, QPushButton, QLabel, QLineEdit, QScrollArea, QSpacerItem, QSizePolicy
 from PyQt5.QtCore import Qt, QRect, QCoreApplication, QMetaObject
 from widget_studentItem import Ui_StudentItem
+from crud_utils import CRUD_Data
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
+        self.CRUD_Student = CRUD_Data(csv_name='Students', key='id_num', attributes=('id_num', 'full_name', 'course', 'yr_lvl', 'gender', 'status'))
         if not MainWindow.objectName():
             MainWindow.setObjectName(u"MainWindow")
         MainWindow.resize(626, 454)
@@ -56,7 +59,7 @@ class Ui_MainWindow(object):
 
         self.horizontalLayout_2 = QHBoxLayout()
         self.horizontalLayout_2.setObjectName(u"horizontalLayout_2")
-        self.horizontalLayout_2.setContentsMargins(18, -1, 50, -1)
+        self.horizontalLayout_2.setContentsMargins(18, -1, 45, -1)
         self.lbl_hdr_idnum = QLabel(self.centralwidget)
         self.lbl_hdr_idnum.setObjectName(u"lbl_hdr_idnum")
 
@@ -140,8 +143,7 @@ class Ui_MainWindow(object):
         self.scroll_contents_layout.setAlignment(Qt.AlignTop)
         
         
-        for i in range(20):
-            self.addStudent()
+        self.listStudents()
 
     def loadStylesheet(self):
         style_sheet_file = QFile("styles_main.qss")  # Path to your QSS file
@@ -165,11 +167,24 @@ class Ui_MainWindow(object):
         self.lbl_hdr_status.setText(QCoreApplication.translate("MainWindow", u"Status", None))
         self.btn_addStudent.setText(QCoreApplication.translate("MainWindow", u"ADD NEW STUDENT", None))
     
-    def addStudent(self):
+    def listStudents(self):
+        with open(self.CRUD_Student.csv_path, 'r', newline='') as csvfile:
+            reader = csv.DictReader(csvfile)
+            for row in reader:
+                id_number = row['id_num']
+                full_name = row['full_name']
+                course = row['course']
+                year_level = row['yr_lvl']
+                gender = row['gender']
+                status = row['status']
+                # Call addStudent method with retrieved values
+                self.addStudent(id_number, full_name, course, year_level, gender, status)
+
+    def addStudent(self, id_number, full_name, course, year_level, gender, status):
         # Create a new instance of the student item with the provided details
         student_item = Ui_StudentItem()
         student_item_widget = QtWidgets.QWidget()
-        student_item.setupUi(student_item_widget, "2022-0062", "Jane Smith", "BSCS", "2", "Woman", "Enrolled")
+        student_item.setupUi(student_item_widget, id_number, full_name, course, year_level, gender, status)
 
         # Add the student item widget to the existing layout
         self.scroll_contents_layout.addWidget(student_item_widget)
