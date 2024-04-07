@@ -3,14 +3,31 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtCore import QFile, QTextStream
 from PyQt5.QtWidgets import QApplication, QMainWindow, QFrame, QWidget, QGridLayout, QVBoxLayout, QHBoxLayout, QPushButton, QLabel, QLineEdit, QScrollArea, QSpacerItem, QSizePolicy
 from PyQt5.QtCore import Qt, QRect, QCoreApplication, QMetaObject
+from widget_courseItem import Ui_CourseItem
+from header_courses import Ui_HeaderCourses
 from widget_studentItem import Ui_StudentItem
+from widget_courseItem import Ui_CourseItem
 from crud_utils import CRUD_Data
 from widget_studentItemCreate import Ui_StudentCreate
 from PyQt5.QtWidgets import QScrollArea
+from header_students import Ui_HeaderStudents
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         self.CRUD_Student = CRUD_Data(csv_name='Students', key='id_num', attributes=('id_num', 'full_name', 'course', 'yr_lvl', 'gender', 'status'))
+        self.CRUD_Course = CRUD_Data(csv_name='Courses', key='course_code', attributes=('course_code', 'course_description'))
+        self.mode = 'Students'
+        self.initGUIBeforeHeader(MainWindow)
+        self.initGUIHeader(MainWindow)
+        self.initGUIAfterHeader(MainWindow)
+        self.initFunctionality()
+        
+    def initFunctionality(self):
+        self.btn_addStudent.clicked.connect(self.addClicked)
+        self.btn_displayStudents.clicked.connect(self.displayStudents)
+        self.btn_displayCourses.clicked.connect(self.displayCourses)
+    
+    def initGUIBeforeHeader(self, MainWindow):
         if not MainWindow.objectName():
             MainWindow.setObjectName(u"MainWindow")
         MainWindow.resize(626, 454)
@@ -59,40 +76,35 @@ class Ui_MainWindow(object):
         self.verticalLayout_2.addWidget(self.divider)
 
         self.horizontalLayout_2 = QHBoxLayout()
+        
+    def initGUIHeader(self, MainWindow):
         self.horizontalLayout_2.setObjectName(u"horizontalLayout_2")
         self.horizontalLayout_2.setContentsMargins(18, -1, 45, -1)
         self.lbl_hdr_idnum = QLabel(self.centralwidget)
         self.lbl_hdr_idnum.setObjectName(u"lbl_hdr_idnum")
-
         self.horizontalLayout_2.addWidget(self.lbl_hdr_idnum)
 
         self.lbl_hdr_name = QLabel(self.centralwidget)
         self.lbl_hdr_name.setObjectName(u"lbl_hdr_name")
-
         self.horizontalLayout_2.addWidget(self.lbl_hdr_name)
 
         self.lbl_hhr_course = QLabel(self.centralwidget)
         self.lbl_hhr_course.setObjectName(u"lbl_hhr_course")
-
         self.horizontalLayout_2.addWidget(self.lbl_hhr_course)
 
         self.lbl_hdr_yrlvl = QLabel(self.centralwidget)
         self.lbl_hdr_yrlvl.setObjectName(u"lbl_hdr_yrlvl")
-
         self.horizontalLayout_2.addWidget(self.lbl_hdr_yrlvl)
 
         self.lbl_hdr_gender = QLabel(self.centralwidget)
         self.lbl_hdr_gender.setObjectName(u"lbl_hdr_gender")
-
         self.horizontalLayout_2.addWidget(self.lbl_hdr_gender)
 
         self.lbl_hdr_status = QLabel(self.centralwidget)
         self.lbl_hdr_status.setObjectName(u"lbl_hdr_status")
-
         self.horizontalLayout_2.addWidget(self.lbl_hdr_status)
 
         self.horizontalSpacer_3 = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
-
         self.horizontalLayout_2.addItem(self.horizontalSpacer_3)
 
         self.horizontalLayout_2.setStretch(0, 3)
@@ -102,7 +114,17 @@ class Ui_MainWindow(object):
         self.horizontalLayout_2.setStretch(4, 2)
         self.horizontalLayout_2.setStretch(5, 2)
         self.horizontalLayout_2.setStretch(6, 4)
-
+        
+        # Set labels text for students mode
+        self.lbl_hdr_idnum.setText("ID Number")
+        self.lbl_hdr_name.setText("Full Name")
+        self.lbl_hhr_course.setText("Course")
+        self.lbl_hdr_yrlvl.setText("Year Level")
+        self.lbl_hdr_gender.setText("Gender")
+        self.lbl_hdr_status.setText("Status")
+        
+    def initGUIAfterHeader(self,MainWindow):
+        
         self.verticalLayout_2.addLayout(self.horizontalLayout_2)
 
         self.scrollArea = QScrollArea(self.centralwidget)
@@ -129,6 +151,8 @@ class Ui_MainWindow(object):
 
 
         self.gridLayout.addLayout(self.verticalLayout_2, 0, 0, 1, 1)
+        self.lbl_courseCode = QLabel(self.centralwidget)
+        self.lbl_courseDescription = QLabel(self.centralwidget)
 
         MainWindow.setCentralWidget(self.centralwidget)
 
@@ -143,11 +167,8 @@ class Ui_MainWindow(object):
         self.scroll_contents_layout = QVBoxLayout(self.scrollAreaWidgetContents_7)
         self.scroll_contents_layout.setAlignment(Qt.AlignTop)
         
-        self.listStudents()
-        
-        # Buttons
-        self.btn_addStudent.clicked.connect(self.addClicked)
-        
+        self.list() 
+   
     def loadStylesheet(self):
         style_sheet_file = QFile("styles_main.qss")  # Path to your QSS file
         if style_sheet_file.open(QFile.ReadOnly | QFile.Text):
@@ -170,23 +191,32 @@ class Ui_MainWindow(object):
         self.lbl_hdr_status.setText(QCoreApplication.translate("MainWindow", u"Status", None))
         self.btn_addStudent.setText(QCoreApplication.translate("MainWindow", u"ADD NEW STUDENT", None))
     
-    def listStudents(self):
+    def list(self):
         #Clear CSV First
         while self.scroll_contents_layout.count():
             child = self.scroll_contents_layout.takeAt(0)
             if child.widget():
                 child.widget().deleteLater()
-        with open(self.CRUD_Student.csv_path, 'r', newline='') as csvfile:
-            reader = csv.DictReader(csvfile)
-            for row in reader:
-                id_number = row['id_num']
-                full_name = row['full_name']
-                course = row['course']
-                year_level = row['yr_lvl']
-                gender = row['gender']
-                status = row['status']
-                # Call addStudent method with retrieved values
-                self.addStudent(id_number, full_name, course, year_level, gender, status)
+        if(self.mode == 'Students'):
+            with open(self.CRUD_Student.csv_path, 'r', newline='') as csvfile:
+                reader = csv.DictReader(csvfile)
+                for row in reader:
+                    id_number = row['id_num']
+                    full_name = row['full_name']
+                    course = row['course']
+                    year_level = row['yr_lvl']
+                    gender = row['gender']
+                    status = row['status']
+                    # Call addStudent method with retrieved values
+                    self.addStudent(id_number, full_name, course, year_level, gender, status)
+        else:
+            with open(self.CRUD_Course.csv_path, 'r', newline='') as csvfile:
+                reader = csv.DictReader(csvfile)
+                for row in reader:
+                    course_code = row['course_code']
+                    course_desc = row['course_description']
+                    # Call addCourse method with retrieved values
+                    self.addCourse(course_code, course_desc)
 
     def addStudent(self, id_number, full_name, course, year_level, gender, status):
         # Create a new instance of the student item with the provided details
@@ -194,17 +224,35 @@ class Ui_MainWindow(object):
         student_item_widget = QtWidgets.QWidget()
         student_item.setupUi(student_item_widget, id_number, full_name, course, year_level, gender, status)
         # Connect edit and delete signals to lambda functions passing id_number
-        student_item.btn_edit.clicked.connect(lambda: self.editClicked(id_number))
-        student_item.btn_delete.clicked.connect(lambda: self.deleteClicked(id_number))
+        student_item.btn_edit.clicked.connect(lambda: self.editStudentClicked(id_number))
+        student_item.btn_delete.clicked.connect(lambda: self.deleteStudentClicked(id_number))
         # Add the student item widget to the existing layout
         self.scroll_contents_layout.addWidget(student_item_widget)
         
-    def editClicked(self, id_number):
+    def addCourse(self, course_code, course_desc):
+        # Create a new instance of the student item with the provided details
+        course_item = Ui_CourseItem()
+        course_item_widget = QtWidgets.QWidget()
+        course_item.setupUi(course_item_widget, course_code, course_desc)
+        # Connect edit and delete signals to lambda functions passing id_number
+        course_item.btn_edit.clicked.connect(lambda: self.editCourseClicked(course_code))
+        course_item.btn_delete.clicked.connect(lambda: self.deleteCourseClicked(course_code))
+        # Add the student item widget to the existing layout
+        self.scroll_contents_layout.addWidget(course_item_widget)
+        
+    def editStudentClicked(self, id_number):
         print("Edit button clicked for student with ID:", id_number)
 
-    def deleteClicked(self, id_number):
+    def deleteStudentClicked(self, id_number):
         self.CRUD_Student.delete(id_number)
         self.listStudents()
+        
+    def editCourseClicked(self, course_code):
+        print("Edit button clicked for course with ID:", course_code)
+
+    def deleteCourseClicked(self, course_code):
+        self.CRUD_Course.delete(course_code)
+        self.list()
         
     def addClicked(self):
         # Create an instance of Ui_StudentCreate
@@ -241,6 +289,26 @@ class Ui_MainWindow(object):
         print("Course:", course)
         print("Year Level:", year_level)
         print("Gender:", gender)
+            
+    def displayStudents(self):
+        self.lbl_hdr_idnum.setText("ID Number")
+        self.lbl_hdr_name.setText("Full Name")
+        self.lbl_hhr_course.setText("Course ")
+        self.lbl_hdr_yrlvl.setText("Year Level")
+        self.lbl_hdr_gender.setText("Gender")
+        self.lbl_hdr_status.setText("Status")
+        self.mode='Students'
+        self.list()
+
+    def displayCourses(self):
+        self.lbl_hdr_idnum.setText("Course Code")
+        self.lbl_hdr_name.setText("Course Description")
+        self.lbl_hhr_course.setText(" ")
+        self.lbl_hdr_yrlvl.setText(" ")
+        self.lbl_hdr_gender.setText(" ")
+        self.lbl_hdr_status.setText(" ")
+        self.mode='Courses'
+        self.list()
 
 
 if __name__ == "__main__":
