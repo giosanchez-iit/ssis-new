@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 import csv
 from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtCore import QFile, QTextStream
@@ -142,9 +141,14 @@ class Ui_MainWindow(object):
         self.scroll_contents_layout = QVBoxLayout(self.scrollAreaWidgetContents_7)
         self.scroll_contents_layout.setAlignment(Qt.AlignTop)
         
-        
         self.listStudents()
+        
+        # Buttons
+        self.btn_addStudent.clicked.connect(self.addStudentWindow)
 
+    def addStudentWindow(self):
+        print("ADD ME")
+        
     def loadStylesheet(self):
         style_sheet_file = QFile("styles_main.qss")  # Path to your QSS file
         if style_sheet_file.open(QFile.ReadOnly | QFile.Text):
@@ -185,9 +189,20 @@ class Ui_MainWindow(object):
         student_item = Ui_StudentItem()
         student_item_widget = QtWidgets.QWidget()
         student_item.setupUi(student_item_widget, id_number, full_name, course, year_level, gender, status)
-
+        # Connect edit and delete signals to lambda functions passing id_number
+        student_item.btn_edit.clicked.connect(lambda: self.editClicked(id_number))
+        student_item.btn_delete.clicked.connect(lambda: self.deleteClicked(id_number))
         # Add the student item widget to the existing layout
         self.scroll_contents_layout.addWidget(student_item_widget)
+        
+    def editClicked(self, id_number):
+        print("Edit button clicked for student with ID:", id_number)
+        # Implement edit functionality here using the id_number
+
+    def deleteClicked(self, id_number):
+        print("Delete button clicked for student with ID:", id_number)
+        # Implement delete functionality here using the id_number
+
 
 if __name__ == "__main__":
     import sys
