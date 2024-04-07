@@ -1,105 +1,148 @@
 # -*- coding: utf-8 -*-
 from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtCore import QFile, QTextStream
-from PyQt5.QtWidgets import QApplication, QMainWindow, QFrame
+from PyQt5.QtWidgets import QApplication, QMainWindow, QFrame, QWidget, QGridLayout, QVBoxLayout, QHBoxLayout, QPushButton, QLabel, QLineEdit, QScrollArea, QSpacerItem, QSizePolicy
+from PyQt5.QtCore import Qt, QRect, QCoreApplication, QMetaObject
 from widget_studentItem import Ui_StudentItem
-
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
-        MainWindow.setObjectName("MainWindow")
+        if not MainWindow.objectName():
+            MainWindow.setObjectName(u"MainWindow")
+        MainWindow.resize(626, 454)
         MainWindow.setMinimumSize(800, 400)
-        MainWindow.resize(855, 454)
-        self.centralwidget = QtWidgets.QWidget(MainWindow)
-        self.centralwidget.setObjectName("centralwidget")
-        self.gridLayout = QtWidgets.QGridLayout(self.centralwidget)
-        self.gridLayout.setObjectName("gridLayout")
-        self.verticalLayout_2 = QtWidgets.QVBoxLayout()
-        self.verticalLayout_2.setObjectName("verticalLayout_2")
-        self.horizontalLayout_5 = QtWidgets.QHBoxLayout()
-        self.horizontalLayout_5.setObjectName("horizontalLayout_5")
-        self.btn_displayStudents = QtWidgets.QPushButton(self.centralwidget)
-        self.btn_displayStudents.setObjectName("btn_displayStudents")
+        self.centralwidget = QWidget(MainWindow)
+        self.centralwidget.setObjectName(u"centralwidget")
+        self.gridLayout = QGridLayout(self.centralwidget)
+        self.gridLayout.setObjectName(u"gridLayout")
+        self.verticalLayout_2 = QVBoxLayout()
+        self.verticalLayout_2.setObjectName(u"verticalLayout_2")
+        self.horizontalLayout_5 = QHBoxLayout()
+        self.horizontalLayout_5.setObjectName(u"horizontalLayout_5")
+        self.btn_displayStudents = QPushButton(self.centralwidget)
+        self.btn_displayStudents.setObjectName(u"btn_displayStudents")
+
         self.horizontalLayout_5.addWidget(self.btn_displayStudents)
-        self.btn_displayCourses = QtWidgets.QPushButton(self.centralwidget)
-        self.btn_displayCourses.setObjectName("btn_displayCourses")
+
+        self.btn_displayCourses = QPushButton(self.centralwidget)
+        self.btn_displayCourses.setObjectName(u"btn_displayCourses")
+
         self.horizontalLayout_5.addWidget(self.btn_displayCourses)
-        spacerItem = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
-        self.horizontalLayout_5.addItem(spacerItem)
-        self.label = QtWidgets.QLabel(self.centralwidget)
-        self.label.setAlignment(QtCore.Qt.AlignRight|QtCore.Qt.AlignTrailing|QtCore.Qt.AlignVCenter)
-        self.label.setObjectName("label")
+
+        self.horizontalSpacer = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
+
+        self.horizontalLayout_5.addItem(self.horizontalSpacer)
+
+        self.label = QLabel(self.centralwidget)
+        self.label.setObjectName(u"label")
+        self.label.setAlignment(Qt.AlignRight|Qt.AlignTrailing|Qt.AlignVCenter)
+
         self.horizontalLayout_5.addWidget(self.label)
-        self.fld_searchBar = QtWidgets.QLineEdit(self.centralwidget)
-        self.fld_searchBar.setObjectName("fld_searchBar")
+
+        self.fld_searchBar = QLineEdit(self.centralwidget)
+        self.fld_searchBar.setObjectName(u"fld_searchBar")
+
         self.horizontalLayout_5.addWidget(self.fld_searchBar)
+
+
         self.verticalLayout_2.addLayout(self.horizontalLayout_5)
+
         self.divider = QFrame(self.centralwidget)
         self.divider.setObjectName(u"divider")
         self.divider.setFrameShape(QFrame.HLine)
         self.divider.setFrameShadow(QFrame.Sunken)
+
         self.verticalLayout_2.addWidget(self.divider)
-        self.horizontalLayout_2 = QtWidgets.QHBoxLayout()
-        self.horizontalLayout_2.setContentsMargins(20, -1, 50, -1)
-        self.horizontalLayout_2.setObjectName("horizontalLayout_2")
-        self.lbl_hdr_idnum = QtWidgets.QLabel(self.centralwidget)
-        self.lbl_hdr_idnum.setObjectName("lbl_hdr_idnum")
+
+        self.horizontalLayout_2 = QHBoxLayout()
+        self.horizontalLayout_2.setObjectName(u"horizontalLayout_2")
+        self.horizontalLayout_2.setContentsMargins(18, -1, 50, -1)
+        self.lbl_hdr_idnum = QLabel(self.centralwidget)
+        self.lbl_hdr_idnum.setObjectName(u"lbl_hdr_idnum")
+
         self.horizontalLayout_2.addWidget(self.lbl_hdr_idnum)
-        self.lbl_hdr_name = QtWidgets.QLabel(self.centralwidget)
-        self.lbl_hdr_name.setObjectName("lbl_hdr_name")
+
+        self.lbl_hdr_name = QLabel(self.centralwidget)
+        self.lbl_hdr_name.setObjectName(u"lbl_hdr_name")
+
         self.horizontalLayout_2.addWidget(self.lbl_hdr_name)
-        self.lbl_hhr_course = QtWidgets.QLabel(self.centralwidget)
-        self.lbl_hhr_course.setObjectName("lbl_hhr_course")
+
+        self.lbl_hhr_course = QLabel(self.centralwidget)
+        self.lbl_hhr_course.setObjectName(u"lbl_hhr_course")
+
         self.horizontalLayout_2.addWidget(self.lbl_hhr_course)
-        self.lbl_hdr_yrlvl = QtWidgets.QLabel(self.centralwidget)
-        self.lbl_hdr_yrlvl.setObjectName("lbl_hdr_yrlvl")
+
+        self.lbl_hdr_yrlvl = QLabel(self.centralwidget)
+        self.lbl_hdr_yrlvl.setObjectName(u"lbl_hdr_yrlvl")
+
         self.horizontalLayout_2.addWidget(self.lbl_hdr_yrlvl)
-        self.lbl_hdr_gender = QtWidgets.QLabel(self.centralwidget)
-        self.lbl_hdr_gender.setObjectName("lbl_hdr_gender")
+
+        self.lbl_hdr_gender = QLabel(self.centralwidget)
+        self.lbl_hdr_gender.setObjectName(u"lbl_hdr_gender")
+
         self.horizontalLayout_2.addWidget(self.lbl_hdr_gender)
-        spacerItem1 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
-        self.horizontalLayout_2.addItem(spacerItem1)
+
+        self.lbl_hdr_status = QLabel(self.centralwidget)
+        self.lbl_hdr_status.setObjectName(u"lbl_hdr_status")
+
+        self.horizontalLayout_2.addWidget(self.lbl_hdr_status)
+
+        self.horizontalSpacer_3 = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
+
+        self.horizontalLayout_2.addItem(self.horizontalSpacer_3)
+
         self.horizontalLayout_2.setStretch(0, 3)
         self.horizontalLayout_2.setStretch(1, 5)
         self.horizontalLayout_2.setStretch(2, 2)
         self.horizontalLayout_2.setStretch(3, 2)
         self.horizontalLayout_2.setStretch(4, 2)
-        self.horizontalLayout_2.setStretch(5, 4)
+        self.horizontalLayout_2.setStretch(5, 2)
+        self.horizontalLayout_2.setStretch(6, 4)
+
         self.verticalLayout_2.addLayout(self.horizontalLayout_2)
-        self.scrollArea = QtWidgets.QScrollArea(self.centralwidget)
+
+        self.scrollArea = QScrollArea(self.centralwidget)
+        self.scrollArea.setObjectName(u"scrollArea")
         self.scrollArea.setWidgetResizable(True)
-        self.scrollArea.setObjectName("scrollArea")
-        self.scrollAreaWidgetContents_7 = QtWidgets.QWidget()
-        self.scrollAreaWidgetContents_7.setGeometry(QtCore.QRect(0, 0, 833, 322))
-        self.scrollAreaWidgetContents_7.setObjectName("scrollAreaWidgetContents_7")
+        self.scrollAreaWidgetContents_7 = QWidget()
+        self.scrollAreaWidgetContents_7.setObjectName(u"scrollAreaWidgetContents_7")
+        self.scrollAreaWidgetContents_7.setGeometry(QRect(0, 0, 604, 313))
         self.scrollArea.setWidget(self.scrollAreaWidgetContents_7)
+
         self.verticalLayout_2.addWidget(self.scrollArea)
-        self.horizontalLayout_7 = QtWidgets.QHBoxLayout()
-        self.horizontalLayout_7.setObjectName("horizontalLayout_7")
-        self.btn_addStudent = QtWidgets.QPushButton(self.centralwidget)
-        self.btn_addStudent.setObjectName("btn_addStudent")
+
+        self.horizontalLayout_7 = QHBoxLayout()
+        self.horizontalLayout_7.setObjectName(u"horizontalLayout_7")
+        self.btn_addStudent = QPushButton(self.centralwidget)
+        self.btn_addStudent.setObjectName(u"btn_addStudent")
+
+        self.horizontalSpacer_2 = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
+
+        self.horizontalLayout_7.addItem(self.horizontalSpacer_2)
         self.horizontalLayout_7.addWidget(self.btn_addStudent)
-        spacerItem2 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
-        self.horizontalLayout_7.addItem(spacerItem2)
+
         self.verticalLayout_2.addLayout(self.horizontalLayout_7)
+
+
         self.gridLayout.addLayout(self.verticalLayout_2, 0, 0, 1, 1)
+
         MainWindow.setCentralWidget(self.centralwidget)
 
         self.retranslateUi(MainWindow)
-        QtCore.QMetaObject.connectSlotsByName(MainWindow)
-        
+
+        QMetaObject.connectSlotsByName(MainWindow)
+
         # Add Styling
         self.loadStylesheet()
         
         # List Students
-        self.scroll_contents_layout = QtWidgets.QVBoxLayout(self.scrollAreaWidgetContents_7)
-        self.scroll_contents_layout.setAlignment(QtCore.Qt.AlignTop)
+        self.scroll_contents_layout = QVBoxLayout(self.scrollAreaWidgetContents_7)
+        self.scroll_contents_layout.setAlignment(Qt.AlignTop)
         
         
         for i in range(20):
             self.addStudent()
-        
-    
+
     def loadStylesheet(self):
         style_sheet_file = QFile("styles_main.qss")  # Path to your QSS file
         if style_sheet_file.open(QFile.ReadOnly | QFile.Text):
@@ -110,27 +153,26 @@ class Ui_MainWindow(object):
             print("Failed to load stylesheet.")
             
     def retranslateUi(self, MainWindow):
-        _translate = QtCore.QCoreApplication.translate
-        MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
-        self.btn_displayStudents.setText(_translate("MainWindow", "DISPLAY STUDENTS"))
-        self.btn_displayCourses.setText(_translate("MainWindow", "DISPLAY COURSES"))
-        self.label.setText(_translate("MainWindow", "Search: "))
-        self.lbl_hdr_idnum.setText(_translate("MainWindow", "ID Number"))
-        self.lbl_hdr_name.setText(_translate("MainWindow", "Full Name"))
-        self.lbl_hhr_course.setText(_translate("MainWindow", "Course"))
-        self.lbl_hdr_yrlvl.setText(_translate("MainWindow", "Year Level"))
-        self.lbl_hdr_gender.setText(_translate("MainWindow", "Gender"))
-        self.btn_addStudent.setText(_translate("MainWindow", "ADD NEW STUDENT"))
+        MainWindow.setWindowTitle(QCoreApplication.translate("MainWindow", u"MainWindow", None))
+        self.btn_displayStudents.setText(QCoreApplication.translate("MainWindow", u"DISPLAY STUDENTS", None))
+        self.btn_displayCourses.setText(QCoreApplication.translate("MainWindow", u"DISPLAY COURSES", None))
+        self.label.setText(QCoreApplication.translate("MainWindow", u"Search: ", None))
+        self.lbl_hdr_idnum.setText(QCoreApplication.translate("MainWindow", u"ID Number", None))
+        self.lbl_hdr_name.setText(QCoreApplication.translate("MainWindow", u"Full Name", None))
+        self.lbl_hhr_course.setText(QCoreApplication.translate("MainWindow", u"Course", None))
+        self.lbl_hdr_yrlvl.setText(QCoreApplication.translate("MainWindow", u"Year Level", None))
+        self.lbl_hdr_gender.setText(QCoreApplication.translate("MainWindow", u"Gender", None))
+        self.lbl_hdr_status.setText(QCoreApplication.translate("MainWindow", u"Status", None))
+        self.btn_addStudent.setText(QCoreApplication.translate("MainWindow", u"ADD NEW STUDENT", None))
     
     def addStudent(self):
-        # Create a new instance of the student item
+        # Create a new instance of the student item with the provided details
         student_item = Ui_StudentItem()
         student_item_widget = QtWidgets.QWidget()
-        student_item.setupUi(student_item_widget)
+        student_item.setupUi(student_item_widget, "2022-0062", "Jane Smith", "BSCS", "2", "Woman", "Enrolled")
 
         # Add the student item widget to the existing layout
         self.scroll_contents_layout.addWidget(student_item_widget)
-
 
 if __name__ == "__main__":
     import sys
