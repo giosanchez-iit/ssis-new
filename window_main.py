@@ -172,6 +172,11 @@ class Ui_MainWindow(object):
         self.btn_addStudent.setText(QCoreApplication.translate("MainWindow", u"ADD NEW STUDENT", None))
     
     def listStudents(self):
+        #Clear CSV First
+        while self.scroll_contents_layout.count():
+            child = self.scroll_contents_layout.takeAt(0)
+            if child.widget():
+                child.widget().deleteLater()
         with open(self.CRUD_Student.csv_path, 'r', newline='') as csvfile:
             reader = csv.DictReader(csvfile)
             for row in reader:
@@ -197,11 +202,10 @@ class Ui_MainWindow(object):
         
     def editClicked(self, id_number):
         print("Edit button clicked for student with ID:", id_number)
-        # Implement edit functionality here using the id_number
 
     def deleteClicked(self, id_number):
-        print("Delete button clicked for student with ID:", id_number)
-        # Implement delete functionality here using the id_number
+        self.CRUD_Student.delete(id_number)
+        self.listStudents()
 
 
 if __name__ == "__main__":
