@@ -433,6 +433,8 @@ class Ui_MainWindow(object):
         self.list()
         
     def addClicked(self):
+        self.clearScrollContents()
+        self.list()
         if self.mode == 'Students':
             self.prompt("Add a student.")
             # Create an instance of Ui_StudentCreate
@@ -441,6 +443,7 @@ class Ui_MainWindow(object):
             student_create_ui.setupUi(student_create_widget)
             
             student_create_ui.btn_save.clicked.connect(lambda: self.saveStudentClicked(student_create_ui))
+            student_create_ui.btn_cancel.clicked.connect(self.list)
             # Add the widget to the vertical layout
             self.scroll_contents_layout.addWidget(student_create_widget)
         elif self.mode == 'Courses':
