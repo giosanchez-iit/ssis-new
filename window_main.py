@@ -1,4 +1,5 @@
 import csv
+import re
 from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtCore import QFile, QTextStream
 from PyQt5.QtWidgets import QApplication, QMainWindow, QFrame, QWidget, QGridLayout, QVBoxLayout, QHBoxLayout, QPushButton, QLabel, QLineEdit, QScrollArea, QSpacerItem, QSizePolicy
@@ -364,6 +365,45 @@ class Ui_MainWindow(object):
                         if(highest_match_score-i<self.CRUD_Student._calculate_match_score(query=query, row=row) <=highest_match_score-i+1 and highest_match_score-i > 0):
                             if h_id_number != id_number:
                                 self.addStudent(id_number, full_name, course, year_level, gender, status)
+                                
+    
+    def saveClicked(self, student_create_ui):
+        # Get the contents of all fields and combo boxes
+        id_number = student_create_ui.fld_idNum.text()
+        full_name = student_create_ui.fld_fullName.text()
+        course = student_create_ui.cbb_course.currentText()
+        year_level = student_create_ui.cbb_yrLvl.currentText()
+        gender = student_create_ui.cbb_gender.currentText()
+
+        # Validate the data
+        if self.validateStudentData(id_number, full_name, course, year_level, gender):
+            # Call a method with the retrieved contents as parameters
+            self.saveStudentData(id_number, full_name, course, year_level, gender)
+
+    # Inside the validateStudentData method
+    def validateStudentData(self, id_number, full_name, course, year_level, gender):
+        # Check if all fields are filled in
+        if not (id_number and full_name and course and year_level and gender):
+            return False
+        
+        # Check if ID number is in the format ####-####
+        if not re.match(r'\d{4}-\d{4}', id_number):
+            return False
+        
+        # Check if ID number already exists in the CSV
+        if self.CRUD_Student._exists(id_number):
+            return False
+        
+        return True
+
+
+    def saveStudentData(self, id_number, full_name, course, year_level, gender):
+        if course:
+            status = 'Not Enrolled'
+        else:
+            status = 'Enrolled'
+        self.CRUD_Student.create(id_num=id_number, full_name=full_name, course=course, yr_lvl=year_level, gender=gender, status=status)
+        self.list()
                     
     def listCoursesByScore(self, query):
         self.clearScrollContents()
@@ -403,7 +443,6 @@ class Ui_MainWindow(object):
             child = self.scroll_contents_layout.takeAt(0)
             if child.widget():
                 child.widget().deleteLater()
-
 
 if __name__ == "__main__":
     import sys

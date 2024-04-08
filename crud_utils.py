@@ -22,10 +22,30 @@ class CRUD_Data:
             print(f"Error: {kwargs[self.key]} already exists.")
             return
 
-        # Write data to CSV
-        with open(self.csv_path, 'a', newline='') as csvfile:
+        # Read existing data from CSV
+        existing_data = []
+        with open(self.csv_path, 'r', newline='') as csvfile:
+            reader = csv.DictReader(csvfile)
+            for row in reader:
+                existing_data.append(row)
+
+        # Find the correct position to insert the new row based on the key
+        index_to_insert = 0
+        for idx, row in enumerate(existing_data):
+            if row[self.key] > kwargs[self.key]:
+                index_to_insert = idx
+                break
+        else:
+            index_to_insert = len(existing_data)
+
+        # Insert the new row at the correct position
+        existing_data.insert(index_to_insert, kwargs)
+
+        # Write updated data to CSV
+        with open(self.csv_path, 'w', newline='') as csvfile:
             writer = csv.DictWriter(csvfile, fieldnames=self.attributes)
-            writer.writerow(kwargs)
+            writer.writeheader()
+            writer.writerows(existing_data)
         print("Data created successfully.")
 
     def read(self, key):

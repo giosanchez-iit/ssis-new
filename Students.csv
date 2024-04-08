@@ -1,8 +1,8 @@
 id_num,full_name,course,yr_lvl,gender,status
 2022-0120,Samuel Johnson,BSECE,4,Man,Enrolled
 2022-0121,Samyel Johnson,BSECE,4,Man,Enrolled
+2022-0122,Gio Kiefer A. Sanchez,BAFil,1,Man,Not Enrolled
 2023-0089,Michael Harris,BSME,2,Man,Enrolled
-2023-0256,Aiden Clark,BSEE,2,Man,Enrolled
 2023-0300,Olivia Lewis,BSIT,3,Non-binary,Enrolled
 2022-0410,Noah Walker,BSCS,4,Man,Enrolled
 2023-0350,Emma Allen,BSME,1,Woman,Enrolled
@@ -10,4 +10,4 @@ id_num,full_name,course,yr_lvl,gender,status
 2023-0450,Charlotte Davis,BSECE,3,Woman,Enrolled
 2022-0611,Ethan Martin,BSCS,4,Man,Enrolled
 2022-0712,William Thompson,BSEE,2,Man,Enrolled
-2023-0650,Sophia Hernandez,BSME,3,Non-binary,Enrolled
+2022-0025,Gio Kiefer A. Sanchez,BAFil,1,Man,Not Enrolled

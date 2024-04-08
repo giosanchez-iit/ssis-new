@@ -1,3 +1,4 @@
+import csv
 from PyQt5 import QtCore, QtGui, QtWidgets
 
 
@@ -101,6 +102,9 @@ class Ui_StudentCreate(object):
 
         # Populate year level combo box
         self.cbb_yrLvl.addItems(["1", "2", "3", "4", "5"])
+        
+        # Populate course combo box
+        self.populateCourseComboBox()
 
     def applyStyleSheet(self, Form):
         # Load stylesheet from file
@@ -134,6 +138,18 @@ class Ui_StudentCreate(object):
             self.cbb_gender.setStyleSheet("height: 40px;")
         else:
             print("Failed to load stylesheet.")
+            
+    def populateCourseComboBox(self):
+        # Clear existing items in the combo box
+        self.cbb_course.clear()
+
+        # Read the Courses.csv file and populate the combo box
+        with open("Courses.csv", 'r', newline='') as csvfile:
+            reader = csv.DictReader(csvfile)
+            for row in reader:
+                course_code = row['course_code']
+                # Add the course in the format "Course Code - Course Description"
+                self.cbb_course.addItem(f"{course_code}")
 
     def retranslateUi(self, Form):
         _translate = QtCore.QCoreApplication.translate
