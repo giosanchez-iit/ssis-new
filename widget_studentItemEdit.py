@@ -74,13 +74,3 @@ class Ui_zz(object):
         self.lbl_status.setText(_translate("Form", "Enrolled"))
         self.btn_save.setText(_translate("Form", "Save"))
         self.btn_cancel.setText(_translate("Form", "Cancel"))
-
-
-if __name__ == "__main__":
-    import sys
-    app = QtWidgets.QApplication(sys.argv)
-    Form = QtWidgets.QWidget()
-    ui = Ui_Form()
-    ui.setupUi(Form)
-    Form.show()
-    sys.exit(app.exec_())

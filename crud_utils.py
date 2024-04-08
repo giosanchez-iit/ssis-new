@@ -102,17 +102,13 @@ class CRUD_Data:
         row_values_lower = [value.lower() for value in row.values()]
 
         # Tokenize query and row values into words
-        query_words = query_lower.split()
-        row_words = ' '.join(row_values_lower).split()
+        query_tokens = query_lower.split()
+        row_tokens = ' '.join(row_values_lower).split()
 
-        # Compute the similarity ratio between query and row
-        matcher = difflib.SequenceMatcher(None, query_lower, ' '.join(row_values_lower))
-        similarity_ratio = matcher.ratio()
+        # Calculate partial token set ratio using fuzzywuzzy
+        partial_token_set_ratio = fuzz.partial_token_set_ratio(query_tokens, row_tokens)
 
-        # Compute the match score as the percentage similarity
-        match_score = similarity_ratio * 100
-
-        return match_score
+        return partial_token_set_ratio
 
 
     def _exists(self, key):

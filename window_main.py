@@ -23,13 +23,15 @@ class Ui_MainWindow(object):
         self.initFunctionality()
         
     def initFunctionality(self):
-        self.btn_addStudent.clicked.connect(self.addClicked)
+        self.btn_addItem.clicked.connect(self.addClicked)
         self.btn_displayStudents.clicked.connect(self.displayStudents)
         self.btn_displayCourses.clicked.connect(self.displayCourses)
+        self.fld_searchBar.returnPressed.connect(self.searchItem)
     
     def initGUIBeforeHeader(self, MainWindow):
         if not MainWindow.objectName():
             MainWindow.setObjectName(u"MainWindow")
+        MainWindow.setWindowTitle("Simple Student Information System")
         MainWindow.resize(626, 454)
         MainWindow.setMinimumSize(840, 420)
         self.centralwidget = QWidget(MainWindow)
@@ -139,13 +141,13 @@ class Ui_MainWindow(object):
 
         self.horizontalLayout_7 = QHBoxLayout()
         self.horizontalLayout_7.setObjectName(u"horizontalLayout_7")
-        self.btn_addStudent = QPushButton(self.centralwidget)
-        self.btn_addStudent.setObjectName(u"btn_addStudent")
+        self.btn_addItem = QPushButton(self.centralwidget)
+        self.btn_addItem.setObjectName(u"btn_addItem")
 
         self.horizontalSpacer_2 = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
 
         self.horizontalLayout_7.addItem(self.horizontalSpacer_2)
-        self.horizontalLayout_7.addWidget(self.btn_addStudent)
+        self.horizontalLayout_7.addWidget(self.btn_addItem)
 
         self.verticalLayout_2.addLayout(self.horizontalLayout_7)
 
@@ -179,7 +181,6 @@ class Ui_MainWindow(object):
             print("Failed to load stylesheet.")
             
     def retranslateUi(self, MainWindow):
-        MainWindow.setWindowTitle(QCoreApplication.translate("MainWindow", u"MainWindow", None))
         self.btn_displayStudents.setText(QCoreApplication.translate("MainWindow", u"DISPLAY STUDENTS", None))
         self.btn_displayCourses.setText(QCoreApplication.translate("MainWindow", u"DISPLAY COURSES", None))
         self.label.setText(QCoreApplication.translate("MainWindow", u"Search: ", None))
@@ -189,7 +190,7 @@ class Ui_MainWindow(object):
         self.lbl_hdr_yrlvl.setText(QCoreApplication.translate("MainWindow", u"Year Level", None))
         self.lbl_hdr_gender.setText(QCoreApplication.translate("MainWindow", u"Gender", None))
         self.lbl_hdr_status.setText(QCoreApplication.translate("MainWindow", u"Status", None))
-        self.btn_addStudent.setText(QCoreApplication.translate("MainWindow", u"ADD NEW STUDENT", None))
+        self.btn_addItem.setText(QCoreApplication.translate("MainWindow", u"ADD NEW STUDENT", None))
     
     def list(self):
         #Clear CSV First
@@ -245,7 +246,7 @@ class Ui_MainWindow(object):
 
     def deleteStudentClicked(self, id_number):
         self.CRUD_Student.delete(id_number)
-        self.listStudents()
+        self.list()
         
     def editCourseClicked(self, course_code):
         print("Edit button clicked for course with ID:", course_code)
@@ -289,7 +290,7 @@ class Ui_MainWindow(object):
         print("Course:", course)
         print("Year Level:", year_level)
         print("Gender:", gender)
-            
+           
     def displayStudents(self):
         self.lbl_hdr_idnum.setText("ID Number")
         self.lbl_hdr_name.setText("Full Name")
@@ -299,6 +300,7 @@ class Ui_MainWindow(object):
         self.lbl_hdr_status.setText("Status")
         self.mode='Students'
         self.list()
+        self.btn_addItem.setText("Add NEW STUDENT")
 
     def displayCourses(self):
         self.lbl_hdr_idnum.setText("Course Code")
@@ -309,6 +311,98 @@ class Ui_MainWindow(object):
         self.lbl_hdr_status.setText(" ")
         self.mode='Courses'
         self.list()
+        self.btn_addItem.setText("ADD NEW COURSE")
+        
+    def searchItem(self):
+        print("searching...")
+        query = self.fld_searchBar.text()  # Get the text from the search bar
+        if query.strip():  # Check if the query is not empty after stripping whitespace
+            if self.mode == 'Students':
+                self.listStudentsByScore(query)
+            else:
+                self.listCoursesByScore(query)
+        else:
+            self.list()
+            
+    def listStudentsByScore(self,query):
+        self.clearScrollContents()
+        with open(self.CRUD_Student.csv_path, 'r', newline='') as csvfile:
+                reader = csv.DictReader(csvfile)
+                highest_match_score = 0
+                #first, ensure that we get the highest element.
+                for row in reader:
+                    id_number = row['id_num']
+                    full_name = row['full_name']
+                    course = row['course']
+                    year_level = row['yr_lvl']
+                    gender = row['gender']
+                    status = row['status']
+                    row_score = self.CRUD_Student._calculate_match_score(query=query, row=row)
+                    if highest_match_score < row_score:
+                        highest_match_score = row_score
+                        h_id_number = row['id_num']
+                        h_full_name = row['full_name']
+                        h_course = row['course']
+                        h_year_level = row['yr_lvl']
+                        h_gender = row['gender']
+                        h_status = row['status']
+                        
+                self.addStudent(h_id_number, h_full_name, h_course, h_year_level, h_gender, h_status)
+                
+                csvfile.seek(0)
+                next(reader)
+                
+                for row in reader:
+                    id_number = row['id_num']
+                    full_name = row['full_name']
+                    course = row['course']
+                    year_level = row['yr_lvl']
+                    gender = row['gender']
+                    status = row['status']
+                    # Call addStudent method with retrieved values
+                    for i in range(0, 15):
+                        if(highest_match_score-i<self.CRUD_Student._calculate_match_score(query=query, row=row) <=highest_match_score-i+1 and highest_match_score-i > 0):
+                            if h_id_number != id_number:
+                                self.addStudent(id_number, full_name, course, year_level, gender, status)
+                    
+    def listCoursesByScore(self, query):
+        self.clearScrollContents()
+        with open(self.CRUD_Course.csv_path, 'r', newline='') as csvfile:
+            reader = csv.DictReader(csvfile)
+            highest_match_score = 0
+            # First, find the highest scoring course
+            for row in reader:
+                course_code = row['course_code']
+                course_desc = row['course_description']
+                row_score = self.CRUD_Course._calculate_match_score(query=query, row=row)
+                if highest_match_score < row_score:
+                    highest_match_score = row_score
+                    h_course_code = course_code
+                    h_course_desc = course_desc
+
+            # Add the highest scoring course to the scroll contents
+            self.addCourse(h_course_code, h_course_desc)
+
+            # Reset the file pointer to the beginning and skip header
+            csvfile.seek(0)
+            next(reader)
+
+            # Iterate over other courses and add them based on their scores
+            for row in reader:
+                course_code = row['course_code']
+                course_desc = row['course_description']
+                # Call addCourse method with retrieved values for scores in a range of 0 to 15
+                for i in range(0, 15):
+                    if (highest_match_score - i < self.CRUD_Course._calculate_match_score(query=query, row=row) <= highest_match_score - i + 1 and highest_match_score - i > 0):
+                        if h_course_code != course_code:
+                            self.addCourse(course_code, course_desc)
+                        
+    def clearScrollContents(self):
+        # Clear all widgets from the scroll area
+        while self.scroll_contents_layout.count():
+            child = self.scroll_contents_layout.takeAt(0)
+            if child.widget():
+                child.widget().deleteLater()
 
 
 if __name__ == "__main__":
