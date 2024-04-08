@@ -99,9 +99,11 @@ class Ui_StudentCreate(object):
     def populateComboBoxes(self):
         # Populate gender combo box
         self.cbb_gender.addItems(["Man", "Woman", "Non-Binary", "Other"])
+        self.cbb_gender.setCurrentIndex(-1)
 
         # Populate year level combo box
         self.cbb_yrLvl.addItems(["1", "2", "3", "4", "5"])
+        self.cbb_yrLvl.setCurrentIndex(-1)
         
         # Populate course combo box
         self.populateCourseComboBox()
@@ -151,11 +153,13 @@ class Ui_StudentCreate(object):
                 course_code = row['course_code']
                 # Add the course in the format "Course Code - Course Description"
                 self.cbb_course.addItem(f"{course_code}")
+        
+        self.cbb_course.setCurrentIndex(-1)
 
     def retranslateUi(self, Form):
         _translate = QtCore.QCoreApplication.translate
         Form.setWindowTitle(_translate("Form", "Form"))
-        self.fld_idNum.setText(_translate("Form", "2022-0025"))
-        self.fld_fullName.setText(_translate("Form", "Gio Kiefer A. Sanchez"))
-        self.btn_save.setText(_translate("Form", "Save"))
-        self.btn_cancel.setText(_translate("Form", "Cancel"))
+        self.fld_idNum.setText(_translate("Form", " "))
+        self.fld_fullName.setText(_translate("Form", " "))
+        self.btn_save.setText(_translate("Form", " "))
+        self.btn_cancel.setText(_translate("Form", " "))

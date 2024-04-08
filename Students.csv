@@ -1,6 +1,6 @@
 id_num,full_name,course,yr_lvl,gender,status
-2019-0001,Olivier Sanders,BSCS,5,Female,Enrolled
-2019-0002,Milo Alexander Kramer,BSCS,5,Male,Enrolled
+2019-0001,Olivier Sanders,NONE,5,Female,Not Enrolled
+2019-0002,Milo Alexander Kramer,NONE,5,Male,Not Enrolled
 2019-0003,Aiden Samuel Norton,NONE,5,Female,Not Enrolled
 2019-0004,Christian Sebastian Lawrence,BSEcon,5,Male,Enrolled
 2019-0005,Penelope Scarlett Rodgers,NONE,5,Female,Not Enrolled
@@ -10,7 +10,7 @@ id_num,full_name,course,yr_lvl,gender,status
 2019-0009,Kylie Trinity Adams,BSN,5,Non-Binary,Enrolled
 2019-0010,Kenneth Neil Turner,BSN,5,Female,Enrolled
 2019-0011,Owen Bennett Young,BSSW,5,Female,Enrolled
-2019-0012,Andrew Liam Owens,BSCS,5,Non-Binary,Enrolled
+2019-0012,Andrew Liam Owens,NONE,5,Non-Binary,Not Enrolled
 2019-0013,Grace Emma Lewis,BSN,5,Male,Enrolled
 2019-0014,Emma Mia Walker,BSEdu,5,Female,Enrolled
 2019-0015,Isaac Noah Roberts,BSEcon,5,Male,Enrolled
@@ -19,21 +19,21 @@ id_num,full_name,course,yr_lvl,gender,status
 2019-0018,Lucas Elliot Nguyen,BSN,5,Non-Binary,Enrolled
 2019-0019,Isabella Aurora Sanders,BSSW,5,Female,Enrolled
 2019-0020,Michael Ulysses Allen,BSEcon,5,Male,Enrolled
-2019-0021,Camila Ariana Rivera,BSCS,5,Male,Enrolled
-2019-0022,Ivy Ruby Khan,BSCS,5,Male,Enrolled
+2019-0021,Camila Ariana Rivera,NONE,5,Male,Not Enrolled
+2019-0022,Ivy Ruby Khan,NONE,5,Male,Not Enrolled
 2019-0023,Anthony Karl Young,NONE,5,Non-Binary,Not Enrolled
 2019-0024,Harper Grace Brown,NONE,5,Female,Not Enrolled
 2019-0025,Romeo Maximus Miller,BSSW,5,Male,Enrolled
 2019-0026,Avery Leo Chatterjee,BSEdu,5,Female,Enrolled
-2019-0027,Sophia Ariana Khan,BSCS,5,Female,Enrolled
-2019-0028,Ella Taylor Chen,BSCS,5,Non-Binary,Enrolled
+2019-0027,Sophia Ariana Khan,NONE,5,Female,Not Enrolled
+2019-0028,Ella Taylor Chen,NONE,5,Non-Binary,Not Enrolled
 2019-0029,Landon Oscar Smith,BSSW,5,Male,Enrolled
 2019-0030,Julian Alexander Volkova,BSN,5,Female,Enrolled
 2020-0001,Oscar Victor Inoue,BSBio,4,Male,Enrolled
 2020-0002,Micah Ian Oliver,BSN,4,Non-Binary,Enrolled
 2020-0003,Autumn Isabel Jefferson,BSEdu,4,Female,Enrolled
-2020-0004,Leo Alexander O'Sullivan,BSCS,4,Male,Enrolled
-2020-0005,Isabelle Zoey Hughes,BSCS,4,Male,Enrolled
+2020-0004,Leo Alexander O'Sullivan,NONE,4,Male,Not Enrolled
+2020-0005,Isabelle Zoey Hughes,NONE,4,Male,Not Enrolled
 2020-0006,Victoria Grace Fernandez,BSN,4,Female,Enrolled
 2020-0007,Isaac Matthew Thompson,BSSW,4,Female,Enrolled
 2020-0008,Finnegan Robert Schmidt,BSEcon,4,Female,Enrolled
@@ -44,26 +44,26 @@ id_num,full_name,course,yr_lvl,gender,status
 2020-0013,Finley Alexander O'Connor,BSSW,4,Female,Enrolled
 2020-0014,Leonard William Wei,BSN,4,Non-Binary,Enrolled
 2020-0015,Henry Abraham Ali,NONE,4,Male,Not Enrolled
-2020-0016,Taylor Samuel Tanaka,BSCS,4,Male,Enrolled
+2020-0016,Taylor Samuel Tanaka,NONE,4,Male,Not Enrolled
 2020-0017,Isabella Paisley Patel,BSEcon,4,Male,Enrolled
 2020-0018,Charlotte Erika Chen,BSEcon,4,Female,Enrolled
 2020-0019,Daniel Benjamin Brown,BSSW,4,Male,Enrolled
 2020-0020,Priya Grace Gupta,NONE,4,Female,Not Enrolled
-2021-0001,Oliver Valentin Rahman,BSCS,3,Male,Enrolled
+2021-0001,Oliver Valentin Rahman,NONE,3,Male,Not Enrolled
 2021-0002,Zane Aaron Ahmed,BSSW,3,Female,Enrolled
 2021-0003,Lila Addison Santos,BSSW,3,Male,Enrolled
-2021-0004,Valentina Olive Hughes,BSCS,3,Male,Enrolled
+2021-0004,Valentina Olive Hughes,NONE,3,Male,Not Enrolled
 2021-0005,Liam Leo Chen,BSN,3,Non-Binary,Enrolled
 2021-0006,Hannah Mia Baker,NONE,3,Female,Not Enrolled
 2021-0007,Paige Alexis Reyes,NONE,3,Female,Not Enrolled
 2021-0008,Maximus Robert Rodriguez,BSEcon,3,Male,Enrolled
-2021-0009,Chloe Lily O'Connor,BSCS,3,Female,Enrolled
+2021-0009,Chloe Lily O'Connor,NONE,3,Female,Not Enrolled
 2021-0010,Stella Trinity Davis,BSSW,3,Female,Enrolled
 2021-0011,Gavin Owen Lopez,BSN,3,Male,Enrolled
 2021-0012,Daniella Sophie Thompson,BSSW,3,Female,Enrolled
 2021-0013,Amelia Elise Chatterjee,BSEdu,3,Female,Enrolled
 2021-0014,Eleanor Maria Rodriguez,BSN,3,Female,Enrolled
-2021-0015,Carter Samuel Rivera,BSCS,3,Male,Enrolled
+2021-0015,Carter Samuel Rivera,NONE,3,Male,Not Enrolled
 2021-0016,Alexander George Kapoor,BSEcon,3,Male,Enrolled
 2021-0017,Emma Victoria Lopez,BSEdu,3,Female,Enrolled
 2021-0018,Riley Ian Tanaka,BSN,3,Non-Binary,Enrolled

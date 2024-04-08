@@ -291,7 +291,7 @@ class Ui_MainWindow(object):
 
                     # Connect save and cancel signals to appropriate methods
                     student_edit_ui.btn_save.clicked.connect(lambda: self.saveEditedStudent(found_student['id_number'], student_edit_widget))
-                    student_edit_ui.btn_cancel.clicked.connect(student_edit_widget.close)
+                    student_edit_ui.btn_cancel.clicked.connect(self.list)
 
                     # Add the student edit form widget to the existing layout
                     self.scroll_contents_layout.addWidget(student_edit_widget)
@@ -382,7 +382,7 @@ class Ui_MainWindow(object):
                     course_edit_ui = Ui_CourseEdit()
                     course_edit_ui.setupUi(course_edit_widget, found_course['course_code'], found_course['course_description'])
                     course_edit_ui.btn_save.clicked.connect(lambda: self.saveEditedCourse(found_course['course_code'], course_edit_widget))
-                    course_edit_ui.btn_cancel.clicked.connect(course_edit_widget.close)
+                    course_edit_ui.btn_cancel.clicked.connect(self.list)
                     self.scroll_contents_layout.addWidget(course_edit_widget)
                 else:
                     # Otherwise, add the course item
