@@ -1,6 +1,8 @@
 id_num,full_name,course,yr_lvl,gender,status
-2022-0120,Samuel Johnson,BSECE,4,Man,Enrolled
-2022-0121,Samyel Johnson,BSECE,4,Man,Enrolled
+2022-0001,Gio Kiefer A. Sanchez,BAFil,1,Man,Enrolled
+2022-0003,Gio Kiefer A. Sanchez,BAFil,1,Man,Enrolled
+2022-0120,Samuel Johnson,BAFil,1,Man,Enrolled
+2022-0121,Samyel Johnson,BAFil,1,Man,Enrolled
 2022-0122,Gio Kiefer A. Sanchez,BAFil,1,Man,Not Enrolled
 2023-0089,Michael Harris,BSME,2,Man,Enrolled
 2023-0300,Olivia Lewis,BSIT,3,Non-binary,Enrolled

@@ -144,6 +144,7 @@ class Ui_StudentCreate(object):
         self.cbb_course.clear()
 
         # Read the Courses.csv file and populate the combo box
+        self.cbb_course.addItem("NONE")
         with open("Courses.csv", 'r', newline='') as csvfile:
             reader = csv.DictReader(csvfile)
             for row in reader:

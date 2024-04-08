@@ -12,6 +12,7 @@ from crud_utils import CRUD_Data
 from widget_studentItemCreate import Ui_StudentCreate
 from PyQt5.QtWidgets import QScrollArea
 from header_students import Ui_HeaderStudents
+from widget_studentItemEdit import Ui_StudentEdit
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
@@ -243,8 +244,76 @@ class Ui_MainWindow(object):
         self.scroll_contents_layout.addWidget(course_item_widget)
         
     def editStudentClicked(self, id_number):
-        print("Edit button clicked for student with ID:", id_number)
+        self.clearScrollContents()
+        student_edit_widget = QtWidgets.QWidget()
+        student_edit_ui = Ui_StudentEdit()
 
+        # Initialize variables to hold the details of the found student
+        found_student = None
+
+        # Find the student with the given id_number and skip it during listing
+        with open(self.CRUD_Student.csv_path, 'r', newline='') as csvfile:
+            reader = csv.DictReader(csvfile)
+            for row in reader:
+                if row['id_num'] != id_number:
+                    # If the current student is not the one being edited, add it to the list
+                    id_num = row['id_num']
+                    full_name = row['full_name']
+                    course = row['course']
+                    year_level = row['yr_lvl']
+                    gender = row['gender']
+                    status = row['status']
+                    self.addStudent(id_num, full_name, course, year_level, gender, status)
+                else:
+                    # If the current student matches the one being edited, save its details
+                    found_student = {
+                        'id_number': id_number,
+                        'full_name': row['full_name'],
+                        'course': row['course'],
+                        'year_level': row['yr_lvl'],
+                        'gender': row['gender'],
+                        'status': row['status']
+                    }
+                    student_edit_ui.setupUi(student_edit_widget, found_student['id_number'], found_student['full_name'], found_student['course'], found_student['year_level'], found_student['gender'], found_student['status'])
+
+                    # Connect save and cancel signals to appropriate methods
+                    student_edit_ui.btn_save.clicked.connect(lambda: self.saveEditedStudent(found_student['id_number'], student_edit_widget))
+                    student_edit_ui.btn_cancel.clicked.connect(student_edit_widget.close)
+
+                    # Add the student edit form widget to the existing layout
+                    self.scroll_contents_layout.addWidget(student_edit_widget)
+
+    def saveEditedStudent(self, id_number, student_edit_widget):
+        # Access child widgets from student_edit_widget
+        fld_fullName = student_edit_widget.findChild(QtWidgets.QLineEdit, "fld_fullName")
+        cbb_course = student_edit_widget.findChild(QtWidgets.QComboBox, "cbb_course")
+        cbb_yrLvl = student_edit_widget.findChild(QtWidgets.QComboBox, "cbb_yrLvl")
+        cbb_gender = student_edit_widget.findChild(QtWidgets.QComboBox, "cbb_gender")
+
+        # Get the updated information from the widgets
+        if cbb_course.currentText() == 'NONE':
+            status = 'Not Enrolled'
+        else:
+            status = 'Enrolled'
+
+        updated_info = {
+            'id_num': id_number,  # Assuming 'id_num' is the correct key attribute
+            'full_name': fld_fullName.text(),
+            'course': cbb_course.currentText(),
+            'yr_lvl': cbb_yrLvl.currentText(),  # Assuming 'yr_lvl' is the correct attribute name for year level
+            'gender': cbb_gender.currentText(),
+            'status': status
+        }
+
+        # Save the updated information to the CSV
+        print(updated_info['id_num'])
+        self.CRUD_Student.update(id_number, **updated_info)
+        
+        # Re-list the students
+        self.list()
+
+
+        
     def deleteStudentClicked(self, id_number):
         self.CRUD_Student.delete(id_number)
         self.list()
@@ -399,9 +468,9 @@ class Ui_MainWindow(object):
 
     def saveStudentData(self, id_number, full_name, course, year_level, gender):
         if course:
-            status = 'Not Enrolled'
-        else:
             status = 'Enrolled'
+        else:
+            status = 'Not Enrolled'
         self.CRUD_Student.create(id_num=id_number, full_name=full_name, course=course, yr_lvl=year_level, gender=gender, status=status)
         self.list()
                     
