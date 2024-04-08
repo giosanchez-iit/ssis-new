@@ -1,6 +1,9 @@
 id_num,full_name,course,yr_lvl,gender,status
-2022-0001,Gio Kiefer A. Sanchez,BAFil,1,Man,Enrolled
-2022-0003,Gio Kiefer A. Sanchez,BAFil,1,Man,Enrolled
+2022-0004,Gio Kiefer A. Sanchez,NONE,3,Man,Enrolled
+2022-0024,Gio Kiefer A. Sanchez,BAFil,1,Man,Enrolled
+2022-0025s,sd,sad,1,Man,Enrolled
+2022-0028,Gio Kiefer A. Sanchez,NONE,1,Man,Enrolled
+2022-0030,Gio Kiefer A. Sanchez,NONE,1,Non-Binary,Enrolled
 2022-0120,Samuel Johnson,BAFil,1,Man,Enrolled
 2022-0121,Samyel Johnson,BAFil,1,Man,Enrolled
 2022-0122,Gio Kiefer A. Sanchez,BAFil,1,Man,Not Enrolled
@@ -13,3 +16,4 @@ id_num,full_name,course,yr_lvl,gender,status
 2022-0611,Ethan Martin,BSCS,4,Man,Enrolled
 2022-0712,William Thompson,BSEE,2,Man,Enrolled
 2022-0025,Gio Kiefer A. Sanchez,BAFil,1,Man,Not Enrolled
+2222-2222,asf,NONE,1,Woman,Enrolled

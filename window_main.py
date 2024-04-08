@@ -7,7 +7,8 @@ from PyQt5.QtCore import Qt, QRect, QCoreApplication, QMetaObject
 from widget_courseItem import Ui_CourseItem
 from header_courses import Ui_HeaderCourses
 from widget_studentItem import Ui_StudentItem
-from widget_courseItem import Ui_CourseItem
+from widget_courseItemCreate import Ui_CourseCreate
+from widget_courseItemEdit import Ui_CourseEdit
 from crud_utils import CRUD_Data
 from widget_studentItemCreate import Ui_StudentCreate
 from PyQt5.QtWidgets import QScrollArea
@@ -325,30 +326,89 @@ class Ui_MainWindow(object):
         self.list()
         self.prompt("Changes to Student %s, %s saved!" %(id_number, updated_info["full_name"]))
 
+    def saveStudentClicked(self, student_create_ui):
+        # Get the contents of all fields and combo boxes
+        id_number = student_create_ui.fld_idNum.text()
+        full_name = student_create_ui.fld_fullName.text()
+        course = student_create_ui.cbb_course.currentText()
+        year_level = student_create_ui.cbb_yrLvl.currentText()
+        gender = student_create_ui.cbb_gender.currentText()
 
+        # Validate the data
+        if self.validateStudentData(id_number, full_name, course, year_level, gender):
+            # Call a method with the retrieved contents as parameters
+            self.saveStudentData(id_number, full_name, course, year_level, gender)
+            self.prompt("Student %s, %s Created!" %(id_number, full_name))
+            
+
+    # Inside the Ui_MainWindow class
+    def saveStudentData(self, id_number, full_name, course, year_level, gender):
+        if course:
+            status = 'Enrolled'
+        else:
+            status = 'Not Enrolled'
+        self.CRUD_Student.create(id_num=id_number, full_name=full_name, course=course, yr_lvl=year_level, gender=gender, status=status)
+        self.list()  # Re-list the students after saving
+        self.prompt("Student %s saved successfully." % id_number)
         
     def deleteStudentClicked(self, id_number):
         self.CRUD_Student.delete(id_number)
         self.list()
         self.prompt("Student %s deleted." %(id_number))
-        
+       
     def editCourseClicked(self, course_code):
-        self.prompt("Edit %s" %(course_code))
-        # Clear the scroll area contents
         self.clearScrollContents()
-        
-        # Create a new instance of the course edit widget and its UI
-        course_edit_widget = QtWidgets.QWidget()
-        course_edit_ui = Ui_CourseEdit()
-        course_edit_ui.setupUi(course_edit_widget)
-        
-        # Connect save and cancel signals to appropriate methods
-        course_edit_ui.btn_save.clicked.connect(lambda: self.saveEditedCourse(course_code, course_edit_ui))
-        course_edit_ui.btn_cancel.clicked.connect(course_edit_widget.close)
-        
-        # Add the course edit widget to the scroll area layout
-        self.scroll_contents_layout.addWidget(course_edit_widget)
+        found_course = None
 
+        with open(self.CRUD_Course.csv_path, 'r', newline='') as csvfile:
+            reader = csv.DictReader(csvfile)
+            for row in reader:
+                if row['course_code'] == course_code:
+                    found_course = {
+                        'course_code': course_code,
+                        'course_description': row['course_description']
+                    }
+                    break  # Exit the loop after finding the course
+
+        # List all courses
+        with open(self.CRUD_Course.csv_path, 'r', newline='') as csvfile:
+            reader = csv.DictReader(csvfile)
+            for row in reader:
+                course_code = row['course_code']
+                course_description = row['course_description']
+                if found_course is not None and course_code == found_course['course_code']:
+                    # If the course to be edited is found, add the edit widget
+                    course_edit_widget = QtWidgets.QWidget()
+                    course_edit_ui = Ui_CourseEdit()
+                    course_edit_ui.setupUi(course_edit_widget, found_course['course_code'], found_course['course_description'])
+                    course_edit_ui.btn_save.clicked.connect(lambda: self.saveEditedCourse(found_course['course_code'], course_edit_widget))
+                    course_edit_ui.btn_cancel.clicked.connect(course_edit_widget.close)
+                    self.scroll_contents_layout.addWidget(course_edit_widget)
+                else:
+                    # Otherwise, add the course item
+                    self.addCourse(course_code, course_description)
+        
+        # If the course is not found, display a message
+        if found_course is None:
+            self.prompt("Course %s not found." % course_code)
+
+    def saveEditedCourse(self, course_code, course_edit_widget):
+        # Access child widgets from course_edit_widget
+        line_courseCode = course_edit_widget.findChild(QtWidgets.QLabel, "lbl_courseCode")
+        line_courseDescription = course_edit_widget.findChild(QtWidgets.QLineEdit, "line_courseDescription")
+
+        # Get the updated information from the widgets
+        updated_info = {
+            'course_code': line_courseCode.text(),
+            'course_description': line_courseDescription.text()
+        }
+
+        # Save the updated information to the CSV
+        self.CRUD_Course.update(course_code, **updated_info)
+        
+        # Re-list the courses or perform any other necessary action
+        self.list()
+        self.prompt("Changes to Course %s saved!" % course_code)
 
     def deleteCourseClicked(self, course_code):
         self.CRUD_Course.delete(course_code)
@@ -372,31 +432,28 @@ class Ui_MainWindow(object):
             course_create_ui = Ui_CourseCreate()
             course_create_ui.setupUi(course_create_widget)
             
-            course_create_ui.btn_save.clicked.connect(lambda: self.saveCourseClicked(course_create_ui))
+            course_create_ui.btn_save.clicked.connect(lambda: self.saveCourseClicked(course_create_ui.line_courseCode, course_create_ui.line_courseDescription))
             # Add the widget to the vertical layout
             self.scroll_contents_layout.addWidget(course_create_widget)
         
-        student_create_ui.btn_save.clicked.connect(lambda: self.saveClicked(student_create_ui))
-        # Add the widget to the vertical layout
-        self.scroll_contents_layout.addWidget(student_create_widget)
         
         QtCore.QTimer.singleShot(100, self.scrollToBottom)        
         
     def scrollToBottom(self):
         scroll_bar = self.scrollArea.verticalScrollBar()
         scroll_bar.setValue(scroll_bar.maximum())
-    
-    def saveCourseClicked(self, course_create_ui):
-        # Get the contents of all line edits
-        course_code = course_create_ui.line_courseCode.text()
-        course_description = course_create_ui.line_courseDescription.text()
+
+    def saveCourseClicked(self, line_courseCode, line_courseDescription):
+        # Get the contents of the line edits
+        course_code = line_courseCode.text()
+        course_description = line_courseDescription.text()
 
         # Validate the data
         if self.validateCourseData(course_code, course_description):
-            
-            # Call a method to save the course data
             self.CRUD_Course.create(course_code=course_code, course_description=course_description)
             self.list()
+        else:
+            self.prompt("All Fields must be filled in.")
 
     def validateCourseData(self, course_code, course_description):
         self.prompt("Validating data...")
@@ -412,7 +469,17 @@ class Ui_MainWindow(object):
         # If validation passes, print a success message
         print("Course data is valid.")
         return True
-            
+    
+    def createCourseClicked(self):
+        # Create an instance of Ui_CourseCreate
+        course_create_widget = QtWidgets.QWidget()
+        course_create_ui = Ui_CourseCreate()
+        course_create_ui.setupUi(course_create_widget)
+        
+        course_create_ui.btn_save.clicked.connect(lambda: self.saveCourseClicked(course_create_ui))
+        # Add the widget to the vertical layout
+        self.scroll_contents_layout.addWidget(course_create_widget)
+        
     def saveClicked(self, student_create_ui):
         # Get the contents of all fields and combo boxes
         id_number = student_create_ui.fld_idNum.text()
@@ -421,8 +488,15 @@ class Ui_MainWindow(object):
         year_level = student_create_ui.cbb_yrLvl.currentText()
         gender = student_create_ui.cbb_gender.currentText()
 
-        # Call a method with the retrieved contents as parameters
-        self.saveStudentData(id_number, full_name, course, year_level, gender)
+        # Validate the data based on the mode (Students or Courses)
+        if self.mode == 'Students':
+            if self.validateStudentData(id_number, full_name, course, year_level, gender):
+                # Call a method with the retrieved contents as parameters
+                self.saveStudentData(id_number, full_name, course, year_level, gender)
+        elif self.mode == 'Courses':
+            if self.validateCourseData(course_code, course_description):
+                # Call a method to save the course data
+                self.saveCourseData(course_code, course_description)
     
     def saveStudentData(self, id_number, full_name, course, year_level, gender):
         # Implement your logic here for saving student data
@@ -531,17 +605,16 @@ class Ui_MainWindow(object):
         if not (id_number and full_name and course and year_level and gender):
             self.prompt("Fields must not be left blank.")
             return False
-        
+            
         # Check if ID number is in the format ####-####
-        if not re.match(r'\d{4}-\d{4}', id_number):
+        if not re.match(r'^\d{4}-\d{4}$', id_number):
             self.prompt("ID Number must be in the format ####-####")
             return False
-        
+            
         # Check if ID number already exists in the CSV
         if self.CRUD_Student._exists(id_number):
-            self.prompt("Entity %s already exists." %(id_number))
             return False
-        
+
         return True
 
 

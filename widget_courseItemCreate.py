@@ -1,6 +1,6 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
 
-class Ui_CourseEdit(object):
+class Ui_CourseCreate(object):
     def setupUi(self, Form, course_code="", course_description=""):
         Form.setObjectName("Form")
         Form.resize(710, 72)
@@ -9,15 +9,13 @@ class Ui_CourseEdit(object):
         self.horizontalLayout = QtWidgets.QHBoxLayout()
         self.horizontalLayout.setObjectName("horizontalLayout")
         
-        self.lbl_courseCode = QtWidgets.QLabel(Form)  # Changed to label
-        self.lbl_courseCode.setObjectName("lbl_courseCode")  # Changed object name
-        self.horizontalLayout.addWidget(self.lbl_courseCode)
-        self.lbl_courseCode.setText(course_code)  # Set the initial value
+        self.line_courseCode = QtWidgets.QLineEdit(Form)  # Changed label to line edit
+        self.line_courseCode.setObjectName("line_courseCode")  # Changed object name
+        self.horizontalLayout.addWidget(self.line_courseCode)
         
-        self.line_courseDescription = QtWidgets.QLineEdit(Form)  # Line edit for course description
+        self.line_courseDescription = QtWidgets.QLineEdit(Form)  # Changed label to line edit
         self.line_courseDescription.setObjectName("line_courseDescription")  # Changed object name
         self.horizontalLayout.addWidget(self.line_courseDescription)
-        self.line_courseDescription.setText(course_description)  # Set the initial value
         
         self.btn_save = QtWidgets.QPushButton(Form)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Ignored, QtWidgets.QSizePolicy.Minimum)
@@ -28,14 +26,14 @@ class Ui_CourseEdit(object):
         self.btn_save.setObjectName("btn_save")
         self.horizontalLayout.addWidget(self.btn_save)
         
-        self.btn_cancel = QtWidgets.QPushButton(Form)
+        self.btn_delete = QtWidgets.QPushButton(Form)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Ignored, QtWidgets.QSizePolicy.Minimum)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.btn_cancel.sizePolicy().hasHeightForWidth())
-        self.btn_cancel.setSizePolicy(sizePolicy)
-        self.btn_cancel.setObjectName("btn_cancel")
-        self.horizontalLayout.addWidget(self.btn_cancel)
+        sizePolicy.setHeightForWidth(self.btn_delete.sizePolicy().hasHeightForWidth())
+        self.btn_delete.setSizePolicy(sizePolicy)
+        self.btn_delete.setObjectName("btn_delete")
+        self.horizontalLayout.addWidget(self.btn_delete)
         
         self.horizontalLayout.setStretch(0, 3)
         self.horizontalLayout.setStretch(1, 13)
@@ -47,8 +45,12 @@ class Ui_CourseEdit(object):
         self.retranslateUi(Form)
         QtCore.QMetaObject.connectSlotsByName(Form)
 
+        # Set the initial values of line edits
+        self.line_courseCode.setText(course_code)
+        self.line_courseDescription.setText(course_description)
+
     def retranslateUi(self, Form):
         _translate = QtCore.QCoreApplication.translate
         Form.setWindowTitle(_translate("Form", "Form"))
         self.btn_save.setText(_translate("Form", "Save"))
-        self.btn_cancel.setText(_translate("Form", "Cancel"))
+        self.btn_delete.setText(_translate("Form", "Cancel"))
