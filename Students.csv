@@ -1,19 +1,101 @@
 id_num,full_name,course,yr_lvl,gender,status
-2022-0004,Gio Kiefer A. Sanchez,NONE,3,Man,Enrolled
-2022-0024,Gio Kiefer A. Sanchez,BAFil,1,Man,Enrolled
-2022-0025s,sd,sad,1,Man,Enrolled
-2022-0028,Gio Kiefer A. Sanchez,NONE,1,Man,Enrolled
-2022-0030,Gio Kiefer A. Sanchez,NONE,1,Non-Binary,Enrolled
-2022-0120,Samuel Johnson,BAFil,1,Man,Enrolled
-2022-0121,Samyel Johnson,BAFil,1,Man,Enrolled
-2022-0122,Gio Kiefer A. Sanchez,BAFil,1,Man,Not Enrolled
-2023-0089,Michael Harris,BSME,2,Man,Enrolled
-2023-0300,Olivia Lewis,BSIT,3,Non-binary,Enrolled
-2022-0410,Noah Walker,BSCS,4,Man,Enrolled
-2023-0350,Emma Allen,BSME,1,Woman,Enrolled
-2022-0512,James Wright,BSCE,2,Man,Enrolled
-2023-0450,Charlotte Davis,BSECE,3,Woman,Enrolled
-2022-0611,Ethan Martin,BSCS,4,Man,Enrolled
-2022-0712,William Thompson,BSEE,2,Man,Enrolled
-2022-0025,Gio Kiefer A. Sanchez,BAFil,1,Man,Not Enrolled
-2222-2222,asf,NONE,1,Woman,Enrolled
+2019-0001,Olivier Sanders,BSCS,5,Female,Enrolled
+2019-0002,Milo Alexander Kramer,BSCS,5,Male,Enrolled
+2019-0003,Aiden Samuel Norton,NONE,5,Female,Not Enrolled
+2019-0004,Christian Sebastian Lawrence,BSEcon,5,Male,Enrolled
+2019-0005,Penelope Scarlett Rodgers,NONE,5,Female,Not Enrolled
+2019-0006,Marina Leah Owens,NONE,5,Female,Not Enrolled
+2019-0007,Theodore Yuri Mitchell,BSN,5,Male,Enrolled
+2019-0008,Josiah Liam Edwards,BSBio,5,Male,Enrolled
+2019-0009,Kylie Trinity Adams,BSN,5,Non-Binary,Enrolled
+2019-0010,Kenneth Neil Turner,BSN,5,Female,Enrolled
+2019-0011,Owen Bennett Young,BSSW,5,Female,Enrolled
+2019-0012,Andrew Liam Owens,BSCS,5,Non-Binary,Enrolled
+2019-0013,Grace Emma Lewis,BSN,5,Male,Enrolled
+2019-0014,Emma Mia Walker,BSEdu,5,Female,Enrolled
+2019-0015,Isaac Noah Roberts,BSEcon,5,Male,Enrolled
+2019-0016,Nicholas Ethan Owen,BSSW,5,Male,Enrolled
+2019-0017,Nova Ava Peterson,NONE,5,Female,Not Enrolled
+2019-0018,Lucas Elliot Nguyen,BSN,5,Non-Binary,Enrolled
+2019-0019,Isabella Aurora Sanders,BSSW,5,Female,Enrolled
+2019-0020,Michael Ulysses Allen,BSEcon,5,Male,Enrolled
+2019-0021,Camila Ariana Rivera,BSCS,5,Male,Enrolled
+2019-0022,Ivy Ruby Khan,BSCS,5,Male,Enrolled
+2019-0023,Anthony Karl Young,NONE,5,Non-Binary,Not Enrolled
+2019-0024,Harper Grace Brown,NONE,5,Female,Not Enrolled
+2019-0025,Romeo Maximus Miller,BSSW,5,Male,Enrolled
+2019-0026,Avery Leo Chatterjee,BSEdu,5,Female,Enrolled
+2019-0027,Sophia Ariana Khan,BSCS,5,Female,Enrolled
+2019-0028,Ella Taylor Chen,BSCS,5,Non-Binary,Enrolled
+2019-0029,Landon Oscar Smith,BSSW,5,Male,Enrolled
+2019-0030,Julian Alexander Volkova,BSN,5,Female,Enrolled
+2020-0001,Oscar Victor Inoue,BSBio,4,Male,Enrolled
+2020-0002,Micah Ian Oliver,BSN,4,Non-Binary,Enrolled
+2020-0003,Autumn Isabel Jefferson,BSEdu,4,Female,Enrolled
+2020-0004,Leo Alexander O'Sullivan,BSCS,4,Male,Enrolled
+2020-0005,Isabelle Zoey Hughes,BSCS,4,Male,Enrolled
+2020-0006,Victoria Grace Fernandez,BSN,4,Female,Enrolled
+2020-0007,Isaac Matthew Thompson,BSSW,4,Female,Enrolled
+2020-0008,Finnegan Robert Schmidt,BSEcon,4,Female,Enrolled
+2020-0009,Ricardo Elijah Sanchez,BSEcon,4,Male,Enrolled
+2020-0010,Nash Daniel Khan,BSN,4,Female,Enrolled
+2020-0011,Justin Joshua Johnson,NONE,1,Man,Not Enrolled
+2020-0012,Matthew Kian Müller,BSN,4,Male,Enrolled
+2020-0013,Finley Alexander O'Connor,BSSW,4,Female,Enrolled
+2020-0014,Leonard William Wei,BSN,4,Non-Binary,Enrolled
+2020-0015,Henry Abraham Ali,NONE,4,Male,Not Enrolled
+2020-0016,Taylor Samuel Tanaka,BSCS,4,Male,Enrolled
+2020-0017,Isabella Paisley Patel,BSEcon,4,Male,Enrolled
+2020-0018,Charlotte Erika Chen,BSEcon,4,Female,Enrolled
+2020-0019,Daniel Benjamin Brown,BSSW,4,Male,Enrolled
+2020-0020,Priya Grace Gupta,NONE,4,Female,Not Enrolled
+2021-0001,Oliver Valentin Rahman,BSCS,3,Male,Enrolled
+2021-0002,Zane Aaron Ahmed,BSSW,3,Female,Enrolled
+2021-0003,Lila Addison Santos,BSSW,3,Male,Enrolled
+2021-0004,Valentina Olive Hughes,BSCS,3,Male,Enrolled
+2021-0005,Liam Leo Chen,BSN,3,Non-Binary,Enrolled
+2021-0006,Hannah Mia Baker,NONE,3,Female,Not Enrolled
+2021-0007,Paige Alexis Reyes,NONE,3,Female,Not Enrolled
+2021-0008,Maximus Robert Rodriguez,BSEcon,3,Male,Enrolled
+2021-0009,Chloe Lily O'Connor,BSCS,3,Female,Enrolled
+2021-0010,Stella Trinity Davis,BSSW,3,Female,Enrolled
+2021-0011,Gavin Owen Lopez,BSN,3,Male,Enrolled
+2021-0012,Daniella Sophie Thompson,BSSW,3,Female,Enrolled
+2021-0013,Amelia Elise Chatterjee,BSEdu,3,Female,Enrolled
+2021-0014,Eleanor Maria Rodriguez,BSN,3,Female,Enrolled
+2021-0015,Carter Samuel Rivera,BSCS,3,Male,Enrolled
+2021-0016,Alexander George Kapoor,BSEcon,3,Male,Enrolled
+2021-0017,Emma Victoria Lopez,BSEdu,3,Female,Enrolled
+2021-0018,Riley Ian Tanaka,BSN,3,Non-Binary,Enrolled
+2021-0019,James Oliver Yamada,BSN,3,Male,Enrolled
+2021-0020,Kimberly Aria Nakamura,BSN,3,Female,Enrolled
+2022-0001,Oscar Lawrence Oliver,NONE,2,Male,Not Enrolled
+2022-0002,Micah Lawrence Oliver,NONE,2,Non-Binary,Not Enrolled
+2022-0003,Autumn Lawrence Oliver,NONE,2,Male,Not Enrolled
+2022-0004,Leo Lawrence Oliver,NONE,2,Female,Not Enrolled
+2022-0005,Isabelle Lawrence Oliver,NONE,2,Male,Not Enrolled
+2022-0006,Victoria Lawrence Oliver,NONE,2,Female,Not Enrolled
+2022-0007,Isaac Lawrence Oliver,NONE,2,Non-Binary,Not Enrolled
+2022-0008,Finnegan Lawrence Oliver,NONE,2,Female,Not Enrolled
+2022-0009,Ricardo Lawrence Oliver,NONE,2,Male,Not Enrolled
+2022-0010,Nash Lawrence Oliver,NONE,2,Female,Not Enrolled
+2022-0011,Justin Lawrence Oliver,NONE,2,Male,Not Enrolled
+2022-0012,Matthew Lawrence Oliver,NONE,2,Male,Not Enrolled
+2022-0013,Finley Lawrence Oliver,NONE,2,Female,Not Enrolled
+2022-0014,Leonard Lawrence Oliver,NONE,2,Non-Binary,Not Enrolled
+2022-0015,Henry Lawrence Oliver,NONE,2,Male,Not Enrolled
+2022-0016,Taylor Lawrence Oliver,NONE,2,Male,Not Enrolled
+2022-0017,Isabella Lawrence Oliver,NONE,2,Male,Not Enrolled
+2022-0018,Charlotte Lawrence Oliver,NONE,2,Female,Not Enrolled
+2022-0019,Daniel Lawrence Oliver,NONE,2,Male,Not Enrolled
+2022-0020,Priya Lawrence Oliver,NONE,2,Female,Not Enrolled
+2023-0001,Omar Lawrence Oliver,NONE,1,Male,Not Enrolled
+2023-0002,Teodor Lawrence Oliver,NONE,1,Non-Binary,Not Enrolled
+2023-0003,Aria Lawrence Oliver,NONE,1,Male,Not Enrolled
+2023-0004,Odin Lawrence Oliver,NONE,1,Female,Not Enrolled
+2023-0005,Thea Lawrence Oliver,NONE,1,Male,Not Enrolled
+2023-0006,Octavia Lawrence Oliver,NONE,1,Female,Not Enrolled
+2023-0007,Otto Lawrence Oliver,NONE,1,Non-Binary,Not Enrolled
+2023-0008,Ophelia Lawrence Oliver,NONE,1,Female,Not Enrolled
+2023-0009,Orson Lawrence Oliver,NONE,1,Male,Not Enrolled
+2023-0010,Olivia Lawrence Oliver,NONE,1,Female,Not Enrolled

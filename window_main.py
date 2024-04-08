@@ -411,6 +411,24 @@ class Ui_MainWindow(object):
         self.prompt("Changes to Course %s saved!" % course_code)
 
     def deleteCourseClicked(self, course_code):
+        # Update the course code to 'NONE' and status to 'Not Enrolled' for all students with the specified course code
+        with open(self.CRUD_Student.csv_path, 'r', newline='') as csvfile:
+            reader = csv.DictReader(csvfile)
+            updated_students = []
+            for row in reader:
+                if row['course'] == course_code:
+                    row['course'] = 'NONE'
+                    row['status'] = 'Not Enrolled'
+                updated_students.append(row)
+
+        # Rewrite the CSV file with the updated student information
+        with open(self.CRUD_Student.csv_path, 'w', newline='') as csvfile:
+            fieldnames = updated_students[0].keys()
+            writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
+            writer.writeheader()
+            writer.writerows(updated_students)
+
+        # Now delete the course
         self.CRUD_Course.delete(course_code)
         self.list()
         
