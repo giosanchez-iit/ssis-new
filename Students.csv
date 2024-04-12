@@ -1,94 +1,109 @@
 id_num,full_name,course,yr_lvl,gender,status
-2019-0004,Christian Sebastian Lawrence,BSEcon,5,Male,Enrolled
-2019-0006,Marina Leah Owens,BAPsych,5,Man,Enrolled
-2019-0007,Theodore Yuri Mitchell,NONE,5,Male,Not Enrolled
-2019-0008,Josiah Liam Edwards,BSBio,5,Male,Enrolled
-2019-0010,Kenneth Neil Turner,NONE,5,Female,Not Enrolled
-2019-0011,Owen Bennett Young,BSSW,5,Female,Enrolled
-2019-0012,Andrew Liam Owens,NONE,5,Non-Binary,Not Enrolled
-2019-0013,Grace Emma Lewis,NONE,5,Male,Not Enrolled
-2019-0014,Emma Mia Walker,BSEdu,5,Female,Enrolled
-2019-0015,Isaac Noah Roberts,BSEcon,5,Male,Enrolled
-2019-0016,Nicholas Ethan Owen,BSSW,5,Male,Enrolled
-2019-0017,Nova Ava Peterson,NONE,5,Female,Not Enrolled
-2019-0018,Lucas Elliot Nguyen,NONE,5,Non-Binary,Not Enrolled
-2019-0019,Isabella Aurora Sanders,BSSW,5,Female,Enrolled
-2019-0020,Michael Ulysses Allen,BSEcon,5,Male,Enrolled
-2019-0021,Camila Ariana Rivera,BSEdu,1,Man,Enrolled
-2019-0022,Ivy Ruby Khan,NONE,5,Male,Not Enrolled
-2019-0023,Anthony Karl Young,NONE,5,Non-Binary,Not Enrolled
-2019-0024,Harper Grace Brown,NONE,5,Female,Not Enrolled
-2019-0025,Romeo Maximus Miller,BSSW,5,Male,Enrolled
-2019-0026,Avery Leo Chatterjee,BSEdu,5,Female,Enrolled
-2019-0027,Sophia Ariana Khan,NONE,5,Female,Not Enrolled
-2019-0028,Ella Taylor Chen,NONE,5,Non-Binary,Not Enrolled
-2019-0029,Landon Oscar Smith,BSSW,5,Male,Enrolled
-2019-0030,Julian Alexander Volkova,NONE,5,Female,Not Enrolled
-2020-0001,Oscar Victor Inoue,BSBio,4,Male,Enrolled
-2020-0002,Micah Ian Oliver,NONE,4,Non-Binary,Not Enrolled
-2020-0003,Autumn Isabel Jefferson,BSEdu,4,Female,Enrolled
-2020-0004,Leo Alexander O'Sullivan,NONE,4,Male,Not Enrolled
-2020-0005,Isabelle Zoey Hughes,NONE,4,Male,Not Enrolled
-2020-0006,Victoria Grace Fernandez,NONE,4,Female,Not Enrolled
-2020-0007,Isaac Matthew Thompson,BSSW,4,Female,Enrolled
-2020-0008,Finnegan Robert Schmidt,BSEcon,4,Female,Enrolled
-2020-0009,Ricardo Elijah Sanchez,BSEcon,4,Male,Enrolled
-2020-0010,Nash Daniel Khan,NONE,4,Female,Not Enrolled
-2020-0011,Justin Joshua Johnson,NONE,1,Man,Not Enrolled
-2020-0012,Matthew Kian Müller,NONE,4,Male,Not Enrolled
-2020-0013,Finley Alexander O'Connor,NONE,1,Man,Not Enrolled
-2020-0014,Leonard William Wei,NONE,4,Non-Binary,Not Enrolled
-2020-0015,Henry Abraham Ali,NONE,4,Male,Not Enrolled
-2020-0016,Taylor Samuel Tanaka,NONE,4,Male,Not Enrolled
-2020-0017,Isabella Paisley Patel,BSEcon,4,Male,Enrolled
-2020-0018,Charlotte Erika Chen,BSEcon,4,Female,Enrolled
-2020-0019,Daniel Benjamin Brown,BSSW,4,Male,Enrolled
-2020-0020,Priya Grace Gupta,NONE,4,Female,Not Enrolled
-2021-0001,Oliver Valentin Rahman,NONE,3,Male,Not Enrolled
-2021-0002,Zane Aaron Ahmed,BSSW,3,Female,Enrolled
-2021-0003,Lila Addison Santos,BSSW,3,Male,Enrolled
-2021-0004,Valentina Olive Hughes,NONE,3,Male,Not Enrolled
-2021-0005,Liam Leo Chen,NONE,3,Non-Binary,Not Enrolled
-2021-0006,Hannah Mia Baker,NONE,3,Female,Not Enrolled
-2021-0007,Paige Alexis Reyes,NONE,3,Female,Not Enrolled
-2021-0008,Maximus Robert Rodriguez,BSEcon,3,Male,Enrolled
-2021-0009,Chloe Lily O'Connor,NONE,3,Female,Not Enrolled
-2021-0010,Stella Trinity Davis,BSSW,3,Female,Enrolled
-2021-0011,Gavin Owen Lopez,NONE,3,Male,Not Enrolled
-2021-0012,Daniella Sophie Thompson,BSSW,3,Female,Enrolled
-2021-0013,Amelia Elise Chatterjee,BSEdu,3,Female,Enrolled
-2021-0014,Eleanor Maria Rodriguez,NONE,3,Female,Not Enrolled
-2021-0015,Carter Samuel Rivera,NONE,3,Male,Not Enrolled
-2021-0016,Alexander George Kapoor,BSEcon,3,Male,Enrolled
-2021-0017,Emma Victoria Lopez,BSEdu,3,Female,Enrolled
-2021-0018,Riley Ian Tanaka,NONE,3,Non-Binary,Not Enrolled
-2021-0019,James Oliver Yamada,NONE,3,Male,Not Enrolled
-2021-0020,Kimberly Aria Nakamura,NONE,3,Female,Not Enrolled
-2022-0001,Oscar Lawrence Oliver,NONE,2,Male,Not Enrolled
-2022-0002,Micah Lawrence Oliver,NONE,2,Non-Binary,Not Enrolled
-2022-0003,Autumn Lawrence Oliver,NONE,2,Male,Not Enrolled
-2022-0004,Leo Lawrence Oliver,NONE,2,Female,Not Enrolled
-2022-0005,Isabelle Lawrence Oliver,NONE,2,Male,Not Enrolled
-2022-0006,Victoria Lawrence Oliver,NONE,2,Female,Not Enrolled
-2022-0007,Isaac Lawrence Oliver,NONE,2,Non-Binary,Not Enrolled
-2022-0008,Finnegan Lawrence Oliver,NONE,2,Female,Not Enrolled
-2022-0009,Ricardo Lawrence Oliver,NONE,2,Male,Not Enrolled
-2022-0010,Nash Lawrence Oliver,NONE,2,Female,Not Enrolled
-2022-0011,Justin Lawrence Oliver,NONE,2,Male,Not Enrolled
-2022-0012,Matthew Lawrence Oliver,NONE,2,Male,Not Enrolled
-2022-0013,Finley Lawrence Oliver,NONE,2,Female,Not Enrolled
-2022-0014,Leonard Lawrence Oliver,NONE,2,Non-Binary,Not Enrolled
-2022-0015,Henry Lawrence Oliver,NONE,2,Male,Not Enrolled
-2022-0016,Taylor Lawrence Oliver,NONE,2,Male,Not Enrolled
-2022-0017,Isabella Lawrence Oliver,NONE,2,Male,Not Enrolled
-2022-0018,Charlotte Lawrence Oliver,NONE,2,Female,Not Enrolled
-2022-0019,Daniel Lawrence Oliver,NONE,2,Male,Not Enrolled
-2022-0020,Priya Lawrence Oliver,NONE,2,Female,Not Enrolled
-2022-0224,Rey Tigs,BSD,1,Man,Enrolled
-2023-0001,Omar Lawrence Oliver,NONE,1,Male,Not Enrolled
-2023-0004,Odin Lawrence Oliver,NONE,1,Female,Not Enrolled
-2023-0006,Octavia Lawrence Oliver,NONE,1,Female,Not Enrolled
-2023-0007,Otto Lawrence Oliver,NONE,1,Non-Binary,Not Enrolled
-2023-0008,Ophelia Lawrence Oliver,NONE,1,Female,Not Enrolled
-2023-0009,Orson Lawrence Oliver,NONE,1,Male,Not Enrolled
-2023-0010,Olivia Lawrence Oliver,NONE,1,Female,Not Enrolled
+2019-0001,Jayden Ethan Flores,BSBio,5,Man,Enrolled
+2019-0002,Sophia Isabelle Nguyen,BSChem,5,Woman,Enrolled
+2019-0003,Liam Aiden Gutierrez,BSCS,5,Man,Enrolled
+2019-0004,Christian Sebastian Lawrence,BSBio,5,Man,Enrolled
+2019-0005,Olivia Mia Hernandez,BSEE,5,Non-Binary,Enrolled
+2019-0006,Ethan Jacob Ramirez,BSME,5,Man,Enrolled
+2019-0007,Isabella Ava Diaz,BSN,5,Woman,Enrolled
+2019-0008,Noah Logan Sanchez,BSEd,5,Man,Enrolled
+2019-0009,Emma Sophia Morales,BSAcc,5,Woman,Enrolled
+2019-0010,Alexander Liam Reyes,BA,5,Man,Enrolled
+2019-0011,Abigail Mia Vargas,AB,5,Woman,Enrolled
+2019-0012,Daniel Ethan Castillo,BFA,5,Man,Enrolled
+2019-0013,Avery Isabella Rojas,BMS,5,Woman,Enrolled
+2019-0014,Lucas Jacob Dominguez,BSHRM,5,Man,Enrolled
+2019-0015,Mia Olivia Velasquez,BSIT,5,Woman,Enrolled
+2019-0016,William Aiden Jimenez,BSEcon,5,Man,Enrolled
+2019-0017,Harper Ava Ortiz,BStat,5,Woman,Enrolled
+2019-0018,Elijah Logan Mendoza,BSPL,5,Man,Enrolled
+2019-0019,Nora Isabella Ramos,BSPolSci,5,Woman,Enrolled
+2019-0020,Mason Jacob Gomez,BSHR,5,Man,Enrolled
+2020-0001,Caleb Ethan Rosales,BSIS,4,Man,Enrolled
+2020-0002,Emily Sophia Soto,BSBio,4,Woman,Enrolled
+2020-0003,Jacob Lucas Suarez,BSChem,4,Man,Enrolled
+2020-0004,Isabella Ava Reyes,BSCS,4,Woman,Enrolled
+2020-0005,Noah Liam Moreno,BSEE,4,Man,Enrolled
+2020-0006,Olivia Mia Flores,BSME,4,Woman,Enrolled
+2020-0007,Alexander Ethan Aguilar,BSN,4,Man,Enrolled
+2020-0008,Abigail Isabella Cortez,BSEd,4,Woman,Enrolled
+2020-0009,Daniel William Navarro,BSAcc,4,Man,Enrolled
+2020-0010,Avery Mia Delgado,BA,4,Woman,Enrolled
+2020-0011,Lucas Aiden Vega,AB,4,Man,Enrolled
+2020-0012,Mia Harper Zamora,BFA,4,Woman,Enrolled
+2020-0013,William Elijah Castillo,BMS,4,Man,Enrolled
+2020-0014,Harper Nora Gonzalez,BSHRM,4,Woman,Enrolled
+2020-0015,Elijah Mason Sanchez,BSIT,4,Man,Enrolled
+2020-0016,Nora Avery Dominguez,BSEcon,4,Woman,Enrolled
+2020-0017,Mason Caleb Jimenez,BStat,4,Man,Enrolled
+2020-0018,Caleb Noah Guzman,BSPL,4,Man,Enrolled
+2020-0019,Emily Jacob Ramirez,BSPolSci,4,Woman,Enrolled
+2020-0020,Jacob William Rojas,BSHR,4,Man,Enrolled
+2021-0001,Isabella Olivia Diaz,BSIS,3,Woman,Enrolled
+2021-0002,Noah Alexander Gomez,BSBio,3,Man,Enrolled
+2021-0003,Abigail Mia Ortiz,BSChem,3,Woman,Enrolled
+2021-0004,Daniel Ethan Mendoza,BSCS,3,Man,Enrolled
+2021-0005,Avery Isabella Velasquez,BSEE,3,Woman,Enrolled
+2021-0006,Marina Leah Owens,BSChem,3,Woman,Enrolled
+2021-0007,Lucas Jacob Ramos,BSME,3,Man,Enrolled
+2021-0008,Mia Sophia Soto,BSN,3,Woman,Enrolled
+2021-0009,William Aiden Moreno,BSEd,3,Man,Enrolled
+2021-0010,Harper Ava Suarez,BSAcc,3,Woman,Enrolled
+2021-0011,Elijah Logan Rosales,BA,3,Man,Enrolled
+2021-0012,Nora Isabella Flores,AB,3,Woman,Enrolled
+2021-0013,Mason Caleb Reyes,BFA,3,Man,Enrolled
+2021-0014,Caleb Ethan Aguilar,BMS,3,Man,Enrolled
+2021-0015,Emily Mia Navarro,BSHRM,3,Woman,Enrolled
+2021-0016,Jacob William Delgado,BSIT,3,Man,Enrolled
+2021-0017,Isabella Olivia Vega,BSEcon,3,Woman,Enrolled
+2021-0018,Noah Alexander Zamora,BStat,3,Man,Enrolled
+2021-0019,Abigail Mia Guzman,BSPL,3,Woman,Enrolled
+2021-0020,Daniel Ethan Jimenez,BSPolSci,3,Man,Enrolled
+2022-0001,Avery Nora Castillo,BSHR,2,Woman,Enrolled
+2022-0002,Lucas Jacob Cortez,BSIS,2,Man,Enrolled
+2022-0003,Mia Harper Dominguez,BSBio,2,Woman,Enrolled
+2022-0004,William Elijah Gonzalez,BSChem,2,Man,Enrolled
+2022-0005,Harper Caleb Gutierrez,BSCS,2,Woman,Enrolled
+2022-0006,Elijah Mason Hernandez,BSEE,2,Man,Enrolled
+2022-0007,Nora Avery Jimenez,BSME,2,Woman,Enrolled
+2022-0008,Mason Noah Ledesma,BSN,2,Man,Enrolled
+2022-0009,Caleb Emily Morales,BSEd,2,Other,Enrolled
+2022-0010,Emily Jacob Ramirez,BSAcc,2,Woman,Enrolled
+2022-0011,Jacob Abigail Reyes,BA,2,Non-binary,Enrolled
+2022-0012,Isabella Daniel Rojas,AB,2,Woman,Enrolled
+2022-0013,Noah Olivia Sanchez,BFA,2,Man,Enrolled
+2022-0014,Abigail Lucas Soto,BMS,2,Woman,Enrolled
+2022-0015,Daniel Mia Suarez,BSHRM,2,Man,Enrolled
+2022-0016,Avery William Velasquez,BSIT,2,Woman,Enrolled
+2022-0017,Lucas Harper Vega,BSEcon,2,Man,Enrolled
+2022-0018,Mia Nora Zamora,BStat,2,Woman,Enrolled
+2022-0019,William Elijah Zaragoza,BSPL,2,Man,Enrolled
+2022-0020,Harper Mason Zepeda,BSPolSci,2,Woman,Enrolled
+2023-0801,Elijah Caleb Aguilar,BSHR,1,Man,Enrolled
+2023-0802,Nora Emily Castillo,BSIS,1,Woman,Enrolled
+2023-0803,Mason Jacob Cortez,BSBio,1,Man,Enrolled
+2023-0804,Caleb Isabella Delgado,BSChem,1,Man,Enrolled
+2023-0805,Emily Noah Diaz,BSCS,1,Woman,Enrolled
+2023-0806,Jacob Abigail Dominguez,BSEE,1,Non-binary,Enrolled
+2023-0807,Isabella Daniel Flores,BSME,1,Woman,Enrolled
+2023-0808,Noah Olivia Gomez,BSN,1,Man,Enrolled
+2023-0809,Abigail Lucas Gutierrez,BSEd,1,Woman,Enrolled
+2023-0810,Daniel Mia Hernandez,BSAcc,1,Man,Enrolled
+2023-0905,Aaliyah Jackson Taylor,BSEd,3,Woman,Enrolled
+2023-0906,Elijah Cohen Miller,NONE,1,Man,Not Enrolled
+2023-0907,Liu Mei Wang,BSAcc,3,Woman,Enrolled
+2023-0908,Miguel Rodriguez Sanchez,BSEE,3,Man,Enrolled
+2023-0909,Anna Petrova Ivanova,BFA,3,Woman,Enrolled
+2023-0910,Nguyen Van Nam,NONE,3,Man,Not Enrolled
+2023-1001,Sasaki Hiyona,BSChem,2,Woman,Enrolled
+2023-1002,Benjamin Davies Evans,BSHRM,2,Man,Enrolled
+2023-1003,Aisha Mohammed Hassan,BSIT,2,Woman,Enrolled
+2023-1005,Ivanov Ivan Petrov,BSCS,2,Man,Enrolled
+2023-1006,Xiao Li Zhang,BSPolSci,2,Woman,Enrolled
+2023-1007,Aisha Campbell Brown,AB,2,Woman,Enrolled
+2023-1008,Yang Li Zhang,BStat,2,Woman,Enrolled
+2023-1009,Alessandro Rossi Bianchi,CSCS,2,Man,Enrolled
+2023-1010,Camila Santos Oliveira,NONE,2,Woman,Not Enrolled
+2023-1001,Kim Min-seo,BME,1,Man,Enrolled
+2023-1002,Emily Jones Williams,BA,1,Woman,Enrolled
+2023-1003,Mohamed Ibrahim Hassan,Other,1,Man,Enrolled

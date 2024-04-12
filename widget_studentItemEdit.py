@@ -90,6 +90,11 @@ class Ui_StudentEdit(object):
         # Populate combo boxes with predefined options
         self.populateComboBoxes()
         
+        # Set values for course, year level, and gender
+        self.cbb_course.setCurrentText(course)
+        self.cbb_yrLvl.setCurrentText(year_level)
+        self.cbb_gender.setCurrentText(gender)
+        
         self.retranslateUi(Form)
         QtCore.QMetaObject.connectSlotsByName(Form)
 
@@ -115,6 +120,12 @@ class Ui_StudentEdit(object):
                 course_code = row['course_code']
                 # Add the course in the format "Course Code - Course Description"
                 self.cbb_course.addItem(f"{course_code}")
+
+    def retranslateUi(self, Form):
+        _translate = QtCore.QCoreApplication.translate
+        Form.setWindowTitle(_translate("Form", "Form"))
+        self.btn_save.setText(_translate("Form", "Save"))
+        self.btn_cancel.setText(_translate("Form", "Cancel"))
 
     def retranslateUi(self, Form):
         _translate = QtCore.QCoreApplication.translate
