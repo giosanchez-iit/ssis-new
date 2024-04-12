@@ -1,7 +1,7 @@
 import csv
 import re
 from PyQt5 import QtCore, QtGui, QtWidgets
-from PyQt5.QtCore import QFile, QTextStream
+from PyQt5.QtCore import QFile, QTextStream, QTimer
 from PyQt5.QtWidgets import QApplication, QMainWindow, QFrame, QWidget, QGridLayout, QVBoxLayout, QHBoxLayout, QPushButton, QLabel, QLineEdit, QScrollArea, QSpacerItem, QSizePolicy
 from PyQt5.QtCore import Qt, QRect, QCoreApplication, QMetaObject
 from widget_courseItem import Ui_CourseItem
@@ -29,7 +29,7 @@ class Ui_MainWindow(object):
         self.btn_addItem.clicked.connect(self.addClicked)
         self.btn_displayStudents.clicked.connect(self.displayStudents)
         self.btn_displayCourses.clicked.connect(self.displayCourses)
-        self.fld_searchBar.returnPressed.connect(self.searchItem)
+        self.fld_searchBar.textChanged.connect(self.searchItem)
     
     def initGUIBeforeHeader(self, MainWindow):
         if not MainWindow.objectName():
@@ -253,15 +253,19 @@ class Ui_MainWindow(object):
         course_item.btn_delete.clicked.connect(lambda: self.deleteCourseClicked(course_code))
         # Add the student item widget to the existing layout
         self.scroll_contents_layout.addWidget(course_item_widget)
-        
+            
+    from PyQt5.QtCore import QTimer
+
     def editStudentClicked(self, id_number):
         self.clearScrollContents()
+        self.fld_searchBar.setText = ""
         student_edit_widget = QtWidgets.QWidget()
         student_edit_ui = Ui_StudentEdit()
 
         # Initialize variables to hold the details of the found student
         found_student = None
-
+        rows_total = row_of_element = 0
+                
         # Find the student with the given id_number and skip it during listing
         with open(self.CRUD_Student.csv_path, 'r', newline='') as csvfile:
             reader = csv.DictReader(csvfile)
@@ -275,7 +279,8 @@ class Ui_MainWindow(object):
                     gender = row['gender']
                     status = row['status']
                     self.addStudent(id_num, full_name, course, year_level, gender, status)
-                    self.prompt("Now Editing Student %s, %s." %(id_num, full_name))
+                    self.prompt("Now Editing Student %s, %s." % (id_num, full_name))
+                    rows_total += 1
                 else:
                     # If the current student matches the one being edited, save its details
                     found_student = {
@@ -286,15 +291,32 @@ class Ui_MainWindow(object):
                         'gender': row['gender'],
                         'status': row['status']
                     }
-                    self.prompt("Now Editing Student %s, %s." %(found_student["id_number"], found_student["full_name"]))
-                    student_edit_ui.setupUi(student_edit_widget, found_student['id_number'], found_student['full_name'], found_student['course'], found_student['year_level'], found_student['gender'], found_student['status'])
+                    self.prompt("Now Editing Student %s, %s." % (found_student["id_number"], found_student["full_name"]))
+                    student_edit_ui.setupUi(student_edit_widget, found_student['id_number'], found_student['full_name'],
+                                            found_student['course'], found_student['year_level'], found_student['gender'],
+                                            found_student['status'])
 
                     # Connect save and cancel signals to appropriate methods
-                    student_edit_ui.btn_save.clicked.connect(lambda: self.saveEditedStudent(found_student['id_number'], student_edit_widget))
+                    student_edit_ui.btn_save.clicked.connect(
+                        lambda: self.saveEditedStudent(found_student['id_number'], student_edit_widget))
                     student_edit_ui.btn_cancel.clicked.connect(self.list)
 
                     # Add the student edit form widget to the existing layout
                     self.scroll_contents_layout.addWidget(student_edit_widget)
+                    row_of_element = rows_total
+
+            scroll_bar = self.scrollArea.verticalScrollBar()
+
+            if rows_total > 0:
+                # Calculate the value for the desired percentage
+                percentage = float(row_of_element) / float(rows_total)
+                print(percentage)
+                scroll_value = int(75*row_of_element)
+                print(scroll_value)
+                # Set the scroll bar's value to the calculated value if search bar populated
+                QTimer.singleShot(100, lambda: scroll_bar.setSliderPosition(scroll_value))
+
+                        
 
     def saveEditedStudent(self, id_number, student_edit_widget):
         # Access child widgets from student_edit_widget
@@ -358,7 +380,9 @@ class Ui_MainWindow(object):
        
     def editCourseClicked(self, course_code):
         self.clearScrollContents()
+        self.fld_searchBar.setText = ''
         found_course = None
+        rows_total = row_of_element = 0
 
         with open(self.CRUD_Course.csv_path, 'r', newline='') as csvfile:
             reader = csv.DictReader(csvfile)
@@ -380,17 +404,31 @@ class Ui_MainWindow(object):
                     # If the course to be edited is found, add the edit widget
                     course_edit_widget = QtWidgets.QWidget()
                     course_edit_ui = Ui_CourseEdit()
-                    course_edit_ui.setupUi(course_edit_widget, found_course['course_code'], found_course['course_description'])
-                    course_edit_ui.btn_save.clicked.connect(lambda: self.saveEditedCourse(found_course['course_code'], course_edit_widget))
+                    course_edit_ui.setupUi(course_edit_widget, found_course['course_code'],
+                                            found_course['course_description'])
+                    course_edit_ui.btn_save.clicked.connect(
+                        lambda: self.saveEditedCourse(found_course['course_code'], course_edit_widget))
                     course_edit_ui.btn_cancel.clicked.connect(self.list)
                     self.scroll_contents_layout.addWidget(course_edit_widget)
+                    row_of_element = rows_total
                 else:
                     # Otherwise, add the course item
                     self.addCourse(course_code, course_description)
-        
-        # If the course is not found, display a message
-        if found_course is None:
-            self.prompt("Course %s not found." % course_code)
+                    rows_total += 1
+
+        # Scroll to the position of the edited course if found
+        if rows_total > 0:
+            # Calculate the value for the desired percentage
+            percentage = float(row_of_element) / float(rows_total)
+
+            # Set the scroll bar's value to the calculated value after a delay
+            QTimer.singleShot(100, lambda: self.scrollToPercentage(percentage))
+
+    def scrollToPercentage(self, percentage):
+        scroll_bar = self.scrollArea.verticalScrollBar()
+        scroll_value = int(scroll_bar.maximum() * percentage)
+        scroll_bar.setSliderPosition(scroll_value)
+
 
     def saveEditedCourse(self, course_code, course_edit_widget):
         # Access child widgets from course_edit_widget
@@ -529,6 +567,7 @@ class Ui_MainWindow(object):
         print("Gender:", gender)
            
     def displayStudents(self):
+        self.fld_searchBar.setText("")
         self.lbl_hdr_idnum.setText("ID Number")
         self.lbl_hdr_name.setText("Full Name")
         self.lbl_hhr_course.setText("Course ")
@@ -541,6 +580,7 @@ class Ui_MainWindow(object):
         self.prompt("Now displaying Students.")
 
     def displayCourses(self):
+        self.fld_searchBar.setText("")
         self.lbl_hdr_idnum.setText("Course Code")
         self.lbl_hdr_name.setText("Course Description")
         self.lbl_hhr_course.setText(" ")
@@ -554,12 +594,20 @@ class Ui_MainWindow(object):
         
     def searchItem(self):
         self.prompt("Searching...")
-        query = self.fld_searchBar.text()  # Get the text from the search bar
+        try:
+            query = str(self.fld_searchBar.text())  # Get the text from the search bar and convert it to a string
+        except:
+            query = ""
+        
         if query.strip():  # Check if the query is not empty after stripping whitespace
-            if self.mode == 'Students':
-                self.listStudentsByScore(query)
-            else:
-                self.listCoursesByScore(query)
+            try:
+                if self.mode == 'Students':
+                    self.listStudentsByScore(query)
+                else:
+                    self.listCoursesByScore(query)
+            except:
+                # Handle any exceptions that might occur during the search
+                self.list()
         else:
             self.list()
             

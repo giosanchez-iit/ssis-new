@@ -1,5 +1,6 @@
 import csv
 import os
+import re
 from fuzzywuzzy import fuzz
 import difflib
 
@@ -117,18 +118,18 @@ class CRUD_Data:
         return matched_rows
 
     def _calculate_match_score(self, query, row):
-        # Convert query and row values to lowercase for case-insensitive matching
-        query_lower = query.lower()
-        row_values_lower = [value.lower() for value in row.values()]
+        # Remove punctuation and special characters, and convert to lowercase
+        query_processed = re.sub(r'[^\w\s]', '', query).lower()
+        row_values_processed = [re.sub(r'[^\w\s]', '', value).lower() for value in row.values()]
 
         # Tokenize query and row values into words
-        query_tokens = query_lower.split()
-        row_tokens = ' '.join(row_values_lower).split()
+        query_tokens = query_processed.split()
+        row_tokens = ' '.join(row_values_processed).split()
 
-        # Calculate partial token set ratio using fuzzywuzzy
-        partial_token_set_ratio = fuzz.partial_token_set_ratio(query_tokens, row_tokens)
+        # Calculate full token set ratio using fuzzywuzzy
+        token_set_ratio = fuzz.token_set_ratio(query_tokens, row_tokens)
 
-        return partial_token_set_ratio
+        return token_set_ratio
 
 
     def _exists(self, key):

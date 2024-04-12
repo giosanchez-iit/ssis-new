@@ -1,13 +1,8 @@
 id_num,full_name,course,yr_lvl,gender,status
-2019-0001,Olivier Sanders,NONE,5,Female,Not Enrolled
-2019-0002,Milo Alexander Kramer,NONE,5,Male,Not Enrolled
-2019-0003,Aiden Samuel Norton,NONE,5,Female,Not Enrolled
 2019-0004,Christian Sebastian Lawrence,BSEcon,5,Male,Enrolled
-2019-0005,Penelope Scarlett Rodgers,NONE,5,Female,Not Enrolled
 2019-0006,Marina Leah Owens,BAPsych,5,Man,Enrolled
 2019-0007,Theodore Yuri Mitchell,NONE,5,Male,Not Enrolled
 2019-0008,Josiah Liam Edwards,BSBio,5,Male,Enrolled
-2019-0009,Kylie Trinity Adams,NONE,5,Non-Binary,Not Enrolled
 2019-0010,Kenneth Neil Turner,NONE,5,Female,Not Enrolled
 2019-0011,Owen Bennett Young,BSSW,5,Female,Enrolled
 2019-0012,Andrew Liam Owens,NONE,5,Non-Binary,Not Enrolled
@@ -19,7 +14,7 @@ id_num,full_name,course,yr_lvl,gender,status
 2019-0018,Lucas Elliot Nguyen,NONE,5,Non-Binary,Not Enrolled
 2019-0019,Isabella Aurora Sanders,BSSW,5,Female,Enrolled
 2019-0020,Michael Ulysses Allen,BSEcon,5,Male,Enrolled
-2019-0021,Camila Ariana Rivera,NONE,5,Male,Not Enrolled
+2019-0021,Camila Ariana Rivera,BSEdu,1,Man,Enrolled
 2019-0022,Ivy Ruby Khan,NONE,5,Male,Not Enrolled
 2019-0023,Anthony Karl Young,NONE,5,Non-Binary,Not Enrolled
 2019-0024,Harper Grace Brown,NONE,5,Female,Not Enrolled
@@ -41,7 +36,7 @@ id_num,full_name,course,yr_lvl,gender,status
 2020-0010,Nash Daniel Khan,NONE,4,Female,Not Enrolled
 2020-0011,Justin Joshua Johnson,NONE,1,Man,Not Enrolled
 2020-0012,Matthew Kian Müller,NONE,4,Male,Not Enrolled
-2020-0013,Finley Alexander O'Connor,BSSW,4,Female,Enrolled
+2020-0013,Finley Alexander O'Connor,NONE,1,Man,Not Enrolled
 2020-0014,Leonard William Wei,NONE,4,Non-Binary,Not Enrolled
 2020-0015,Henry Abraham Ali,NONE,4,Male,Not Enrolled
 2020-0016,Taylor Samuel Tanaka,NONE,4,Male,Not Enrolled
@@ -89,10 +84,9 @@ id_num,full_name,course,yr_lvl,gender,status
 2022-0018,Charlotte Lawrence Oliver,NONE,2,Female,Not Enrolled
 2022-0019,Daniel Lawrence Oliver,NONE,2,Male,Not Enrolled
 2022-0020,Priya Lawrence Oliver,NONE,2,Female,Not Enrolled
+2022-0224,Rey Tigs,BSD,1,Man,Enrolled
 2023-0001,Omar Lawrence Oliver,NONE,1,Male,Not Enrolled
-2023-0003,Aria Lawrence Oliver,NONE,1,Male,Not Enrolled
 2023-0004,Odin Lawrence Oliver,NONE,1,Female,Not Enrolled
-2023-0005,Thea Lawrence Oliver,NONE,1,Male,Not Enrolled
 2023-0006,Octavia Lawrence Oliver,NONE,1,Female,Not Enrolled
 2023-0007,Otto Lawrence Oliver,NONE,1,Non-Binary,Not Enrolled
 2023-0008,Ophelia Lawrence Oliver,NONE,1,Female,Not Enrolled

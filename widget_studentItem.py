@@ -5,6 +5,11 @@ class Ui_StudentItem(object):
     def setupUi(self, Form, id_num="", full_name="", course="", year="", gender="", status=""):
         Form.setObjectName("Form")
         Form.resize(708, 72)
+        Form.setStyleSheet('''
+            QWidget#Form:hover {
+                background-color: #dddddd;
+            }
+        ''')
         self.gridLayout = QtWidgets.QGridLayout(Form)
         self.gridLayout.setObjectName("gridLayout")
         self.horizontalLayout = QtWidgets.QHBoxLayout()
@@ -31,6 +36,7 @@ class Ui_StudentItem(object):
         sizePolicy.setHeightForWidth(self.btn_edit.sizePolicy().hasHeightForWidth())
         self.lbl_status = QtWidgets.QLabel(Form)
         self.lbl_status.setObjectName(u"lbl_status")
+        self.lbl_status.setAlignment(QtCore.Qt.AlignCenter)  
         self.horizontalLayout.addWidget(self.lbl_status)
         self.btn_edit.setSizePolicy(sizePolicy)
         self.btn_edit.setObjectName("btn_edit")
@@ -63,6 +69,21 @@ class Ui_StudentItem(object):
         self.lbl_year.setText(year)
         self.lbl_gender.setText(gender)
         self.lbl_status.setText(status)
+        
+        # text is gray if NONE
+        if course == "NONE":
+            self.lbl_course.setStyleSheet("color: rgb(150,150,150);")
+        
+        # set border color depending on status
+        border_color = "rgb(200, 81, 62)"  # default to red
+        if status == "Enrolled":
+            border_color = "rgb(100, 200, 150)"  # green if enrolled
+
+        # set border style
+        self.lbl_status.setStyleSheet("color: black; border: 2px solid {}; border-radius: 10px; margin: 15px; text-align: center;".format(border_color))
+        
+        # Center the status label in its cell
+        self.gridLayout.setAlignment(QtCore.Qt.AlignCenter)
 
     def retranslateUi(self, Form):
         _translate = QtCore.QCoreApplication.translate

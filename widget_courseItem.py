@@ -5,6 +5,11 @@ class Ui_CourseItem(object):
     def setupUi(self, Form, course_code="", course_description=""):
         Form.setObjectName("Form")
         Form.resize(710, 72)
+        Form.setStyleSheet('''
+            QWidget#Form:hover {
+                background-color: #dddddd;
+            }
+        ''')
         self.gridLayout = QtWidgets.QGridLayout(Form)
         self.gridLayout.setObjectName("gridLayout")
         self.horizontalLayout = QtWidgets.QHBoxLayout()
