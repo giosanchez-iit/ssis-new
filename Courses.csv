@@ -1,9 +1,8 @@
 course_code,course_description
-BSBio,Bachelor of Science in Biology
-BSChem,Bachelor of Science in Chemistry
+BSAA,Bachelor of Science in Asomething Asomething
+BSArch,Bachelor of Science in Architecture
 BSCS,Bachelor of Science in Computer Science
-BSEE,Bachelor of Science in Electrical Engineering
-BSME,Bachelor of Science in Mechanical Engineering
+BSEE,Bachelor of Science in Electrical Engineers
 BSN,Bachelor of Science in Nursing
 BSEd,Bachelor of Science in Education
 BSAcc,Bachelor of Science in Accounting
@@ -12,10 +11,7 @@ AB,Associate of Arts
 BFA,Bachelor of Fine Arts
 BMS,Bachelor of Management Studies
 BSHRM,Bachelor of Science in Human Resource Management
-BSIT,Bachelor of Science in Information Technology
-BSEcon,Bachelor of Science in Economics
 BStat,Bachelor of Science in Statistics
 BSPL,Bachelor of Science in Psychology
 BSPolSci,Bachelor of Science in Political Science
 BSHR,Bachelor of Science in History
-BSIS,Bachelor of Science in Information Systems
