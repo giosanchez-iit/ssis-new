@@ -2,7 +2,6 @@ import csv
 import os
 import re
 from fuzzywuzzy import fuzz
-import difflib
 
 class CRUD_Data:
     def __init__(self, csv_name, key, attributes):
@@ -10,6 +9,25 @@ class CRUD_Data:
         self.key = key
         self.attributes = attributes
         self.csv_path = f"{csv_name}.csv"
+        
+        # Sort the CSV file
+        self._sort_csv()
+
+    def _sort_csv(self):
+        # Read the CSV file
+        with open(self.csv_path, 'r', newline='') as file:
+            # Read the header
+            reader = csv.DictReader(file)
+            header = reader.fieldnames
+            
+            # Sort the CSV rows by the first column (assuming ID_num is the first column)
+            sorted_rows = sorted(reader, key=lambda row: row[header[0]])
+            
+            # Write the sorted rows back to the original file
+            with open(self.csv_path, 'w', newline='') as outfile:
+                writer = csv.DictWriter(outfile, fieldnames=header)
+                writer.writeheader()
+                writer.writerows(sorted_rows)
 
     def create(self, **kwargs):
         # Check if CSV file exists, create if not

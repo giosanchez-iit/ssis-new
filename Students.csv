@@ -1,61 +1,101 @@
 id_num,full_name,course,yr_lvl,gender,status
-2019-0001,Jayden Ethan Flores,NONE,5,Man,Not Enrolled
-2019-0002,Sophia Isabelle Nguyen,NONE,5,Woman,Not Enrolled
-2019-0003,Liam Aiden Gutierrez,BSCS,5,Man,Enrolled
-2019-0004,Christian Sebastian Lawrence,NONE,5,Man,Not Enrolled
-2019-0005,Olivia Mia Hernandez,BSEE,5,Non-Binary,Enrolled
-2019-0006,Ethan Jacob Ramirez,NONE,5,Man,Not Enrolled
-2019-0007,Isabella Ava Diaz,BSN,5,Woman,Enrolled
-2019-0008,Noah Logan Sanchez,BSEd,5,Man,Enrolled
-2019-0009,Emma Sophia Morales,BSAcc,5,Woman,Enrolled
-2019-0010,Alexander Liam Reyes,BA,5,Man,Enrolled
-2019-0011,Abigail Mia Vargas,AB,5,Woman,Enrolled
-2019-0012,Daniel Ethan Castillo,BFA,5,Man,Enrolled
-2019-0013,Avery Isabella Rojas,BMS,5,Woman,Enrolled
-2019-0014,Lucas Jacob Dominguez,BSHRM,5,Man,Enrolled
-2019-0015,Mia Olivia Velasquez,NONE,5,Woman,Not Enrolled
-2019-0016,William Aiden Jimenez,NONE,5,Man,Not Enrolled
-2019-0017,Harper Ava Ortiz,BStat,5,Woman,Enrolled
-2019-0018,Elijah Logan Mendoza,BSPL,5,Man,Enrolled
-2019-0019,Nora Isabella Ramos,BSPolSci,5,Woman,Enrolled
-2019-0020,Mason Jacob Gomez,BSHR,5,Man,Enrolled
-2020-0001,Caleb Ethan Rosales,NONE,4,Man,Not Enrolled
-2020-0002,Emily Sophia Soto,NONE,4,Woman,Not Enrolled
-2020-0003,Jacob Lucas Suarez,NONE,4,Man,Not Enrolled
-2020-0004,Isabella Ava Reyes,BSCS,4,Woman,Enrolled
-2020-0005,Noah Liam Moreno,BSEE,4,Man,Enrolled
-2020-0006,Olivia Mia Flores,NONE,4,Woman,Not Enrolled
-2020-0007,Alexander Ethan Aguilar,BSN,4,Man,Enrolled
-2020-0008,Abigail Isabella Cortez,BSEd,4,Woman,Enrolled
-2020-0009,Daniel William Navarro,BSAcc,4,Man,Enrolled
-2020-0010,Avery Mia Delgado,BA,4,Woman,Enrolled
-2020-0011,Lucas Aiden Vega,AB,4,Man,Enrolled
-2020-0012,Mia Harper Zamora,BFA,4,Woman,Enrolled
-2020-0013,William Elijah Castillo,BMS,4,Man,Enrolled
-2020-0014,Harper Nora Gonzalez,BSHRM,4,Woman,Enrolled
-2020-0015,Elijah Mason Sanchez,NONE,4,Man,Not Enrolled
-2020-0016,Nora Avery Dominguez,NONE,4,Woman,Not Enrolled
-2020-0017,Mason Caleb Jimenez,BStat,4,Man,Enrolled
-2020-0018,Caleb Noah Guzman,BSPL,4,Man,Enrolled
-2020-0019,Emily Jacob Ramirez,BSPolSci,4,Woman,Enrolled
-2020-0020,Jacob William Rojas,BSHR,4,Man,Enrolled
-2021-0001,Isabella Olivia Diaz,NONE,3,Woman,Not Enrolled
-2021-0002,Noah Alexander Gomez,NONE,3,Man,Not Enrolled
-2021-0003,Abigail Mia Ortiz,NONE,3,Woman,Not Enrolled
-2021-0004,Daniel Ethan Mendoza,BSCS,3,Man,Enrolled
-2021-0005,Avery Isabella Velasquez,BSEE,3,Woman,Enrolled
-2021-0006,Marina Leah Owens,NONE,3,Woman,Not Enrolled
-2021-0007,Lucas Jacob Ramos,NONE,3,Man,Not Enrolled
-2021-0008,Mia Sophia Soto,BSN,3,Woman,Enrolled
-2021-0009,William Aiden Moreno,BSEd,3,Man,Enrolled
-2021-0010,Harper Ava Suarez,BSAcc,3,Woman,Enrolled
-2021-0011,Elijah Logan Rosales,BA,3,Man,Enrolled
-2021-0012,Nora Isabella Flores,AB,3,Woman,Enrolled
-2021-0013,Mason Caleb Reyes,BFA,3,Man,Enrolled
-2021-0014,Caleb Ethan Aguilar,BMS,3,Man,Enrolled
-2021-0015,Emily Mia Navarro,BSHRM,3,Woman,Enrolled
-2021-0016,Jacob William Delgado,NONE,3,Man,Not Enrolled
-2021-0017,Isabella Olivia Vega,NONE,3,Woman,Not Enrolled
-2021-0018,Noah Alexander Zamora,BStat,3,Man,Enrolled
-2021-0019,Abigail Mia Guzman,BSPL,2,Woman,Enrolled
-2021-0020,Daniel Ethan Jimenez,BSPolSci,3,Man,Enrolled
+2019-0115,Aisha Petrov Okafor,NONE,5,Man,Not Enrolled
+2019-0884,Cyrus Juan Ivanov,BSHR,5,Man,Enrolled
+2019-2203,Cyrus Khalil Ivanov,BSHR,5,Other,Enrolled
+2019-2454,Aisha Khalil Okafor,BSEd,5,Non-binary,Enrolled
+2019-2723,Mihail Juan Okafor,BSPolSci,5,Other,Enrolled
+2019-4790,Cyrus Chioma Salazar,NONE,5,Other,Not Enrolled
+2019-4889,Cyrus Petrov Ivanov,NONE,5,Woman,Not Enrolled
+2019-5528,Mihail Khalil Salazar,BSHR,5,Woman,Enrolled
+2019-5744,Cyrus Chioma Okafor,BSCS,5,Man,Enrolled
+2019-6179,Li Chioma Kaur,BSPL,5,Man,Enrolled
+2019-6769,Aisha Khalil Wang,BStat,5,Woman,Enrolled
+2019-6872,Adeola Khalil Salazar,NONE,5,Other,Not Enrolled
+2019-7245,Adeola Khalil Ivanov,BSN,5,Man,Enrolled
+2019-7781,Li Chioma Wang,NONE,5,Other,Not Enrolled
+2019-8127,Mihail Juan Salazar,BSCS,5,Woman,Enrolled
+2019-8282,Adeola Khalil Kaur,BSPolSci,5,Woman,Enrolled
+2019-8424,Cyrus Chioma Wang,NONE,5,Woman,Not Enrolled
+2019-8504,Cyrus Petrov Kaur,BSEE,5,Woman,Enrolled
+2019-9832,Adeola Juan Okafor,BSCS,5,Other,Enrolled
+2019-9844,Aisha Iqbal Ivanov,BStat,5,Woman,Enrolled
+2020-0115,Emmanuel Petrov Okafor,NONE,4,Man,Not Enrolled
+2020-0884,Cedric Juan Ivanov,BSHR,4,Man,Enrolled
+2020-2203,Cassius Khalil Ivanov,BSHR,4,Other,Enrolled
+2020-2454,Elara Khalil Okafor,BSEd,4,Non-binary,Enrolled
+2020-2723,Maxwell Juan Okafor,BSPolSci,4,Other,Enrolled
+2020-4790,Octavian Chioma Salazar,NONE,4,Other,Not Enrolled
+2020-4889,Estelle Petrov Ivanov,NONE,4,Woman,Not Enrolled
+2020-5528,Malcolm Khalil Salazar,BSHR,4,Woman,Enrolled
+2020-5744,Cassian Chioma Okafor,BSCS,4,Man,Enrolled
+2020-6179,Lucian Chioma Kaur,BSPL,4,Man,Enrolled
+2020-6769,Esme Khalil Wang,BStat,4,Woman,Enrolled
+2020-6872,Adonis Khalil Salazar,NONE,4,Other,Not Enrolled
+2020-7245,Alaric Khalil Ivanov,BSN,4,Man,Enrolled
+2020-7781,Lysander Chioma Wang,NONE,4,Other,Not Enrolled
+2020-8127,Maverick Juan Salazar,BSCS,4,Woman,Enrolled
+2020-8282,Adelaide Khalil Kaur,BSPolSci,4,Woman,Enrolled
+2020-8424,Calista Chioma Wang,NONE,4,Woman,Not Enrolled
+2020-8504,Cleo Petrov Kaur,BSEE,4,Woman,Enrolled
+2020-9832,Alexei Juan Okafor,BSCS,4,Other,Enrolled
+2020-9844,Elodie Iqbal Ivanov,BStat,4,Woman,Enrolled
+2021-0115,Sebastian Petrovov,NONE,3,Man,Not Enrolled
+2021-0884,Leonidas Juanovich,BSHR,3,Man,Enrolled
+2021-2203,Isadora Khalilova,BSHR,3,Other,Enrolled
+2021-2454,Azura Khalilova,BSEd,3,Non-binary,Enrolled
+2021-2723,Vladimir Juanovich,BSPolSci,3,Other,Enrolled
+2021-4790,Anastasia Chioma,NONE,3,Other,Not Enrolled
+2021-4889,Natasha Petrovova,NONE,3,Woman,Not Enrolled
+2021-5528,Valentina Khalilova,BSHR,3,Woman,Enrolled
+2021-5744,Aleksandr Chioma,BSCS,3,Man,Enrolled
+2021-6179,Kirill Chioma,BSPL,3,Man,Enrolled
+2021-6769,Svetlana Khalilova,BStat,3,Woman,Enrolled
+2021-6872,Ivan Khalilovich,NONE,3,Other,Not Enrolled
+2021-7245,Nikolai Khalilovich,BSN,3,Man,Enrolled
+2021-7781,Ksenia Chioma,NONE,3,Other,Not Enrolled
+2021-8127,Yelena Juanovna,BSCS,3,Woman,Enrolled
+2021-8282,Yuliya Khalilova,BSPolSci,3,Woman,Enrolled
+2021-8424,Olga Chioma,NONE,3,Woman,Not Enrolled
+2021-8504,Ekaterina Petrovna,BSEE,3,Woman,Enrolled
+2021-9832,Dmitri Juanovich,BSCS,3,Other,Enrolled
+2021-9844,Irina Iqbalova,BStat,3,Woman,Enrolled
+2022-0115,Alejandro Petrovich,NONE,2,Man,Not Enrolled
+2022-0884,Joaquin Juanito,BSHR,2,Man,Enrolled
+2022-2203,Isabel Khalilita,BSHR,2,Other,Enrolled
+2022-2454,Amara Khalilita,BSEd,2,Non-binary,Enrolled
+2022-2723,Diego Juanito,BSPolSci,2,Other,Enrolled
+2022-4790,Anahi Chiomita,NONE,2,Other,Not Enrolled
+2022-4889,Natalia Petrovita,NONE,2,Woman,Not Enrolled
+2022-5528,Valeria Khalilita,BSHR,2,Woman,Enrolled
+2022-5744,Alejandro Chiomito,BSCS,2,Man,Enrolled
+2022-6179,Karina Chiomita,BSPL,2,Man,Enrolled
+2022-6769,Sofia Khalilita,BStat,2,Woman,Enrolled
+2022-6872,Iker Khalilito,NONE,2,Other,Not Enrolled
+2022-7245,Nadia Khalilita,BSN,2,Man,Enrolled
+2022-7781,Karla Chiomita,NONE,2,Other,Not Enrolled
+2022-8127,Yasmin Juanita,BSCS,2,Woman,Enrolled
+2022-8282,Yasmina Khalilova,BSPolSci,2,Woman,Enrolled
+2022-8424,Olivia Chiomita,NONE,2,Woman,Not Enrolled
+2022-8504,Elena Petrovita,BSEE,2,Woman,Enrolled
+2022-9832,Dario Juanito,BSCS,2,Other,Enrolled
+2022-9844,Ivanna Iqbalita,BStat,2,Woman,Enrolled
+2023-0115,Alejandro Petrovich,NONE,1,Man,Not Enrolled
+2023-0884,Joaquin Juanito,BSHR,1,Man,Enrolled
+2023-2203,Isabel Khalilita,BSHR,1,Other,Enrolled
+2023-2454,Amara Khalilita,BSEd,1,Non-binary,Enrolled
+2023-2723,Diego Juanito,BSPolSci,1,Other,Enrolled
+2023-4790,Anahi Chiomita,NONE,1,Other,Not Enrolled
+2023-4889,Natalia Petrovita,NONE,1,Woman,Not Enrolled
+2023-5528,Valeria Khalilita,BSHR,1,Woman,Enrolled
+2023-5744,Alejandro Chiomito,BSCS,1,Man,Enrolled
+2023-6179,Karina Chiomita,BSPL,1,Man,Enrolled
+2023-6769,Sofia Khalilita,BStat,1,Woman,Enrolled
+2023-6872,Iker Khalilito,NONE,1,Other,Not Enrolled
+2023-7245,Nadia Khalilita,BSN,1,Man,Enrolled
+2023-7781,Karla Chiomita,NONE,1,Other,Not Enrolled
+2023-8127,Yasmin Juanita,BSCS,1,Woman,Enrolled
+2023-8282,Yasmina Khalilova,BSPolSci,1,Woman,Enrolled
+2023-8424,Olivia Chiomita,NONE,1,Woman,Not Enrolled
+2023-8504,Elena Petrovita,BSEE,1,Woman,Enrolled
+2023-9832,Dario Juanito,BSCS,1,Other,Enrolled
+2023-9844,Ivanna Iqbalita,BStat,1,Woman,Enrolled

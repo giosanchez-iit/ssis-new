@@ -1,18 +1,16 @@
 import csv
 import re
-from PyQt5 import QtCore, QtGui, QtWidgets
+from PyQt5 import QtCore, QtWidgets
 from PyQt5.QtCore import QFile, QTextStream, QTimer
-from PyQt5.QtWidgets import QApplication, QMainWindow, QFrame, QWidget, QGridLayout, QVBoxLayout, QHBoxLayout, QPushButton, QLabel, QLineEdit, QScrollArea, QSpacerItem, QSizePolicy
+from PyQt5.QtWidgets import QApplication, QFrame, QWidget, QGridLayout, QVBoxLayout, QHBoxLayout, QPushButton, QLabel, QLineEdit, QScrollArea, QSpacerItem, QSizePolicy
 from PyQt5.QtCore import Qt, QRect, QCoreApplication, QMetaObject
 from widget_courseItem import Ui_CourseItem
-from header_courses import Ui_HeaderCourses
 from widget_studentItem import Ui_StudentItem
 from widget_courseItemCreate import Ui_CourseCreate
 from widget_courseItemEdit import Ui_CourseEdit
 from crud_utils import CRUD_Data
 from widget_studentItemCreate import Ui_StudentCreate
-from PyQt5.QtWidgets import QScrollArea
-from header_students import Ui_HeaderStudents
+from PyQt5.QtWidgets import QScrollArea, QMessageBox
 from widget_studentItemEdit import Ui_StudentEdit
 
 class Ui_MainWindow(object):
@@ -468,30 +466,49 @@ class Ui_MainWindow(object):
     ##############################################  
     
     def deleteStudentClicked(self, id_number):
-        self.CRUD_Student.delete(id_number)
-        self.list()
-        self.prompt("Student %s deleted." %(id_number))     
+        # Creating a confirmation dialog
+        confirmation = QMessageBox.question(MainWindow, 'Confirmation', 
+                                            "Are you sure you want to delete student %s?" % id_number, 
+                                            QMessageBox.Yes | QMessageBox.No, QMessageBox.No)
+        
+        if confirmation == QMessageBox.Yes:
+            # Proceed with deletion if confirmed
+            self.CRUD_Student.delete(id_number)
+            self.list()
+            self.prompt("Student %s deleted." % id_number)
+        else:
+            # Cancel deletion if not confirmed
+            self.prompt("Deletion cancelled.")
+    
+        
     def deleteCourseClicked(self, course_code):
-        # Update the course code to 'NONE' and status to 'Not Enrolled' for all students with the specified course code
-        with open(self.CRUD_Student.csv_path, 'r', newline='') as csvfile:
-            reader = csv.DictReader(csvfile)
-            updated_students = []
-            for row in reader:
-                if row['course'] == course_code:
-                    row['course'] = 'NONE'
-                    row['status'] = 'Not Enrolled'
-                updated_students.append(row)
-
-        # Rewrite the CSV file with the updated student information
-        with open(self.CRUD_Student.csv_path, 'w', newline='') as csvfile:
-            fieldnames = updated_students[0].keys()
-            writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
-            writer.writeheader()
-            writer.writerows(updated_students)
-
-        # Now delete the course
-        self.CRUD_Course.delete(course_code)
-        self.list()
+        # Creating a confirmation dialog
+        confirmation = QMessageBox.question(MainWindow, 'Confirmation', 
+                                            "Are you sure you want to delete course %s?" % course_code, 
+                                            QMessageBox.Yes | QMessageBox.No, QMessageBox.No)
+        
+        if confirmation == QMessageBox.Yes:
+            # Update the course code to 'NONE' and status to 'Not Enrolled' for all students with the specified course code
+            with open(self.CRUD_Student.csv_path, 'r', newline='') as csvfile:
+                reader = csv.DictReader(csvfile)
+                updated_students = []
+                for row in reader:
+                    if row['course'] == course_code:
+                        row['course'] = 'NONE'
+                        row['status'] = 'Not Enrolled'
+                    updated_students.append(row)
+            # Write back the updated data to the CSV file
+            with open(self.CRUD_Student.csv_path, 'w', newline='') as csvfile:
+                writer = csv.DictWriter(csvfile, fieldnames=self.CRUD_Student.attributes)
+                writer.writeheader()
+                writer.writerows(updated_students)
+                
+            self.CRUD_Course.delete(course_code)
+            self.list()
+            self.prompt("Course %s deleted." % course_code)
+        else:
+            # Cancel deletion if not confirmed
+            self.prompt("Deletion cancelled.")
   
     ##############################################
     #                   LIST                     #
@@ -554,48 +571,47 @@ class Ui_MainWindow(object):
                         self.addCourse(course_code, course_desc)
                 self.prompt("Courses Listed Successfully!")
                                     
-    def listStudentsByScore(self,query):
+    def listStudentsByScore(self, query):
         self.clearScrollContents()
+        
+        # Define variables to store the highest match score and its corresponding student details
+        highest_match_score = 0
+        highest_match_student = None
+        
         with open(self.CRUD_Student.csv_path, 'r', newline='') as csvfile:
-                reader = csv.DictReader(csvfile)
-                highest_match_score = 0
-                #first, ensure that we get the highest element.
-                for row in reader:
-                    id_number = row['id_num']
-                    full_name = row['full_name']
-                    course = row['course']
-                    year_level = row['yr_lvl']
-                    gender = row['gender']
-                    status = row['status']
-                    row_score = self.CRUD_Student._calculate_match_score(query=query, row=row)
-                    if highest_match_score < row_score:
-                        highest_match_score = row_score
-                        h_id_number = row['id_num']
-                        h_full_name = row['full_name']
-                        h_course = row['course']
-                        h_year_level = row['yr_lvl']
-                        h_gender = row['gender']
-                        h_status = row['status']
-                        
-                self.addStudent(h_id_number, h_full_name, h_course, h_year_level, h_gender, h_status)
+            reader = csv.DictReader(csvfile)
+            
+            # Iterate through each row in the CSV
+            for row in reader:
+                # Calculate match score for the current row
+                row_score = self.CRUD_Student._calculate_match_score(query=query, row=row)
                 
+                # Check if the current row has a higher match score than the highest match score so far
+                if row_score > highest_match_score:
+                    highest_match_score = row_score
+                    highest_match_student = row
+            
+            # Add the highest match student to the UI (assuming self.addStudent method adds a student to the UI)
+            if highest_match_student is not None:
+                self.addStudent(highest_match_student['id_num'], highest_match_student['full_name'], highest_match_student['course'], highest_match_student['yr_lvl'], highest_match_student['gender'], highest_match_student['status'])
+                
+                # Reset the file pointer to read from the beginning of the file
                 csvfile.seek(0)
-                next(reader)
+                next(reader)  # Skip the header
                 
+                # Iterate through the remaining rows in the CSV
                 for row in reader:
-                    id_number = row['id_num']
-                    full_name = row['full_name']
-                    course = row['course']
-                    year_level = row['yr_lvl']
-                    gender = row['gender']
-                    status = row['status']
-                    # Call addStudent method with retrieved values
-                    for i in range(0, 15):
-                        if(highest_match_score-i<self.CRUD_Student._calculate_match_score(query=query, row=row) <=highest_match_score-i+1 and highest_match_score-i > 0):
-                            if h_id_number != id_number:
-                                self.addStudent(id_number, full_name, course, year_level, gender, status)
-                                
-        self.prompt("Students matching '%s' listed." %(query))                     
+                    # Calculate match score for the current row
+                    row_score = self.CRUD_Student._calculate_match_score(query=query, row=row)
+                    
+                    # Check if the row score is within a certain range of the highest match score
+                    if highest_match_score - 15 < row_score <= highest_match_score:
+                        self.addStudent(row['id_num'], row['full_name'], row['course'], row['yr_lvl'], row['gender'], row['status'])
+                    
+        # Print a message indicating the closest match score
+        if highest_match_student is not None:
+            self.prompt("Students matching '%s' listed. (CLOSEST MATCH: %d%%)" % (query, highest_match_score))
+                    
 
     def listCoursesByScore(self, query):
         self.clearScrollContents()
