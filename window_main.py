@@ -525,7 +525,6 @@ class Ui_MainWindow(object):
         self.mode='Students'
         self.list()
         self.btn_addItem.setText("ADD NEW STUDENT")
-        self.prompt("Now displaying Students.")
 
     def displayCourses(self):
         self.fld_searchBar.clear()
@@ -541,7 +540,8 @@ class Ui_MainWindow(object):
         self.prompt("Now displaying Courses.")
  
     def list(self):
-            #Clear CSV First
+            #Clear CSV and Field
+            self.fld_searchBar.clear()
             while self.scroll_contents_layout.count():
                 child = self.scroll_contents_layout.takeAt(0)
                 if child.widget():
@@ -559,7 +559,7 @@ class Ui_MainWindow(object):
                         status = row['status']
                         # Call addStudent method with retrieved values
                         self.addStudent(id_number, full_name, course, year_level, gender, status)
-                self.prompt("Students Listed Sucessfully!")
+                self.prompt("Now displaying Students.")
             else:
                 self.prompt("Listing Courses...")
                 with open(self.CRUD_Course.csv_path, 'r', newline='') as csvfile:
@@ -569,7 +569,6 @@ class Ui_MainWindow(object):
                         course_desc = row['course_description']
                         # Call addCourse method with retrieved values
                         self.addCourse(course_code, course_desc)
-                self.prompt("Courses Listed Successfully!")
                                     
     def listStudentsByScore(self, query):
         self.clearScrollContents()
@@ -594,24 +593,25 @@ class Ui_MainWindow(object):
             # Add the highest match student to the UI (assuming self.addStudent method adds a student to the UI)
             if highest_match_student is not None:
                 self.addStudent(highest_match_student['id_num'], highest_match_student['full_name'], highest_match_student['course'], highest_match_student['yr_lvl'], highest_match_student['gender'], highest_match_student['status'])
+            
+            # Reset the file pointer to read from the beginning of the file
+            csvfile.seek(0)
+            next(reader)  # Skip the header
+            
+            # Iterate through the remaining rows in the CSV
+            for row in reader:
+                # Calculate match score for the current row
+                row_score = self.CRUD_Student._calculate_match_score(query=query, row=row)
                 
-                # Reset the file pointer to read from the beginning of the file
-                csvfile.seek(0)
-                next(reader)  # Skip the header
-                
-                # Iterate through the remaining rows in the CSV
-                for row in reader:
-                    # Calculate match score for the current row
-                    row_score = self.CRUD_Student._calculate_match_score(query=query, row=row)
-                    
-                    # Check if the row score is within a certain range of the highest match score
-                    if highest_match_score - 15 < row_score <= highest_match_score:
+                # Check if the row score is within a certain range of the highest match score
+                if highest_match_score - 15 < row_score <= highest_match_score:
+                    # Skip adding the highest match student again
+                    if row != highest_match_student:
                         self.addStudent(row['id_num'], row['full_name'], row['course'], row['yr_lvl'], row['gender'], row['status'])
-                    
+                        
         # Print a message indicating the closest match score
         if highest_match_student is not None:
             self.prompt("Students matching '%s' listed. (CLOSEST MATCH: %d%%)" % (query, highest_match_score))
-                    
 
     def listCoursesByScore(self, query):
         self.clearScrollContents()
@@ -619,18 +619,20 @@ class Ui_MainWindow(object):
             self.prompt("Reading File.")
             reader = csv.DictReader(csvfile)
             highest_match_score = 0
+            highest_match_course = None
+            
             # First, find the highest scoring course
             for row in reader:
                 course_code = row['course_code']
                 course_desc = row['course_description']
                 row_score = self.CRUD_Course._calculate_match_score(query=query, row=row)
-                if highest_match_score < row_score:
+                if row_score > highest_match_score:
                     highest_match_score = row_score
-                    h_course_code = course_code
-                    h_course_desc = course_desc
-
+                    highest_match_course = row
+            
             # Add the highest scoring course to the scroll contents
-            self.addCourse(h_course_code, h_course_desc)
+            if highest_match_course is not None:
+                self.addCourse(highest_match_course['course_code'], highest_match_course['course_description'])
 
             # Reset the file pointer to the beginning and skip header
             csvfile.seek(0)
@@ -641,13 +643,17 @@ class Ui_MainWindow(object):
             for row in reader:
                 course_code = row['course_code']
                 course_desc = row['course_description']
-                # Call addCourse method with retrieved values for scores in a range of 0 to 15
-                for i in range(0, 15):
-                    if (highest_match_score - i < self.CRUD_Course._calculate_match_score(query=query, row=row) <= highest_match_score - i + 1 and highest_match_score - i > 0):
-                        if h_course_code != course_code:
-                            self.addCourse(course_code, course_desc)
-                            
-            self.prompt("Courses added!")
+                # Calculate match score for the current row
+                row_score = self.CRUD_Course._calculate_match_score(query=query, row=row)
+                # Check if the row score is within a certain range of the highest match score
+                if highest_match_score - 15 < row_score <= highest_match_score:
+                    # Skip adding the highest scoring course again
+                    if course_code != highest_match_course['course_code']:
+                        self.addCourse(course_code, course_desc)
+                        
+        self.prompt("Courses matching '%s' listed. (CLOSEST MATCH: %d%%)" % (query, highest_match_score))
+
+
             
     ##############################################
     #              HELPER METHODS                #
@@ -679,7 +685,6 @@ class Ui_MainWindow(object):
         scroll_bar.setSliderPosition(scroll_value)
                      
     def searchItem(self):
-        self.prompt("Searching...")
         try:
             query = str(self.fld_searchBar.text())  # Get the text from the search bar and convert it to a string
         except:

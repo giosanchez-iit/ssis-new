@@ -2,6 +2,7 @@ import csv
 import os
 import re
 from fuzzywuzzy import fuzz
+from itertools import product 
 
 class CRUD_Data:
     def __init__(self, csv_name, key, attributes):
@@ -138,17 +139,16 @@ class CRUD_Data:
     def _calculate_match_score(self, query, row):
         # Remove punctuation and special characters, and convert to lowercase
         query_processed = re.sub(r'[^\w\s]', '', query).lower()
-        row_values_processed = [re.sub(r'[^\w\s]', '', value).lower() for value in row.values()]
 
-        # Tokenize query and row values into words
-        query_tokens = query_processed.split()
-        row_tokens = ' '.join(row_values_processed).split()
+        # Calculate match score for each cell
+        match_scores = []
+        for value in row.values():
+            # Calculate similarity score using fuzz.ratio
+            score = fuzz.ratio(query_processed, value.lower())
+            match_scores.append(score)
 
-        # Calculate full token set ratio using fuzzywuzzy
-        token_set_ratio = fuzz.token_set_ratio(query_tokens, row_tokens)
-
-        return token_set_ratio
-
+        # Return the highest match score
+        return max(match_scores)
 
     def _exists(self, key):
         # Check if key already exists in CSV
