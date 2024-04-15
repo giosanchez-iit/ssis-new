@@ -223,6 +223,7 @@ class Ui_MainWindow(object):
             course_create_ui.setupUi(course_create_widget)
             
             course_create_ui.btn_save.clicked.connect(lambda: self.saveCourseClicked(course_create_ui.line_courseCode, course_create_ui.line_courseDescription))
+            course_create_ui.btn_cancel.clicked.connect(self.list)
             # Add the widget to the vertical layout
             self.scroll_contents_layout.addWidget(course_create_widget)
         
@@ -661,9 +662,8 @@ class Ui_MainWindow(object):
      
     def validateCourseData(self, course_code, course_description):
         print(course_code, course_description)
-        self.prompt("Validating data...")
         if (course_code=="" or course_description==""):
-            print("Error: Course code and description are required.")
+            self.prompt("Error: Course code and description are required.")
             return False
 
         # Check if the course code is unique

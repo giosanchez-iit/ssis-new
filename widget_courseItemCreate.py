@@ -26,14 +26,14 @@ class Ui_CourseCreate(object):
         self.btn_save.setObjectName("btn_save")
         self.horizontalLayout.addWidget(self.btn_save)
         
-        self.btn_delete = QtWidgets.QPushButton(Form)
+        self.btn_cancel = QtWidgets.QPushButton(Form)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Ignored, QtWidgets.QSizePolicy.Minimum)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.btn_delete.sizePolicy().hasHeightForWidth())
-        self.btn_delete.setSizePolicy(sizePolicy)
-        self.btn_delete.setObjectName("btn_delete")
-        self.horizontalLayout.addWidget(self.btn_delete)
+        sizePolicy.setHeightForWidth(self.btn_cancel.sizePolicy().hasHeightForWidth())
+        self.btn_cancel.setSizePolicy(sizePolicy)
+        self.btn_cancel.setObjectName("btn_cancel")
+        self.horizontalLayout.addWidget(self.btn_cancel)
         
         self.horizontalLayout.setStretch(0, 3)
         self.horizontalLayout.setStretch(1, 13)
@@ -53,4 +53,4 @@ class Ui_CourseCreate(object):
         _translate = QtCore.QCoreApplication.translate
         Form.setWindowTitle(_translate("Form", "Form"))
         self.btn_save.setText(_translate("Form", "Save"))
-        self.btn_delete.setText(_translate("Form", "Cancel"))
+        self.btn_cancel.setText(_translate("Form", "Cancel"))
