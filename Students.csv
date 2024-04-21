@@ -1,9 +1,8 @@
 id_num,full_name,course,yr_lvl,gender,status
-2019-0115,Aisha Petrov Okafor,NONE,5,Man,Not Enrolled
 2019-0884,Cyrus Juan Ivanov,NONE,5,Man,Not Enrolled
 2019-2203,Cyrus Khalil Ivanov,NONE,5,Other,Not Enrolled
 2019-2454,Aisha Khalil Okafor,BSEd,5,Non-binary,Enrolled
-2019-2723,Mihail Juan Okafor,BSPolSci,5,Other,Enrolled
+2019-2723,Mihail Juan Okafor,NONE,5,Other,Not Enrolled
 2019-4790,Cyrus Chioma Salazar,NONE,5,Other,Not Enrolled
 2019-5528,Mihail Khalil Salazar,NONE,5,Woman,Not Enrolled
 2019-5744,Cyrus Chioma Okafor,BSCS,5,Man,Enrolled
@@ -13,7 +12,7 @@ id_num,full_name,course,yr_lvl,gender,status
 2019-7245,Adeola Khalil Ivanov,BSN,5,Man,Enrolled
 2019-7781,Li Chioma Wang,NONE,5,Other,Not Enrolled
 2019-8127,Mihail Juan Salazar,BSCS,5,Woman,Enrolled
-2019-8282,Adeola Khalil Kaur,BSPolSci,5,Woman,Enrolled
+2019-8282,Adeola Khalil Kaur,NONE,5,Woman,Not Enrolled
 2019-8424,Cyrus Chioma Wang,NONE,5,Woman,Not Enrolled
 2019-8504,Cyrus Petrov Kaur,BSEE,5,Woman,Enrolled
 2019-9832,Adeola Juan Okafor,BSCS,5,Other,Enrolled
@@ -21,7 +20,7 @@ id_num,full_name,course,yr_lvl,gender,status
 2020-0884,Cedric Juan Ivanov,NONE,4,Man,Not Enrolled
 2020-2203,Cassius Khalil Ivanov,NONE,4,Other,Not Enrolled
 2020-2454,Elara Khalil Okafor,BSEd,4,Non-binary,Enrolled
-2020-2723,Maxwell Juan Okafor,BSPolSci,4,Other,Enrolled
+2020-2723,Maxwell Juan Okafor,NONE,4,Other,Not Enrolled
 2020-4790,Octavian Chioma Salazar,NONE,4,Other,Not Enrolled
 2020-4889,Estelle Petrov Ivanov,NONE,4,Woman,Not Enrolled
 2020-5528,Malcolm Khalil Salazar,NONE,4,Woman,Not Enrolled
@@ -32,7 +31,7 @@ id_num,full_name,course,yr_lvl,gender,status
 2020-7245,Alaric Khalil Ivanov,BSN,4,Man,Enrolled
 2020-7781,Lysander Chioma Wang,NONE,4,Other,Not Enrolled
 2020-8127,Maverick Juan Salazar,BSCS,4,Woman,Enrolled
-2020-8282,Adelaide Khalil Kaur,BSPolSci,4,Woman,Enrolled
+2020-8282,Adelaide Khalil Kaur,NONE,4,Woman,Not Enrolled
 2020-8424,Calista Chioma Wang,NONE,4,Woman,Not Enrolled
 2020-8504,Cleo Petrov Kaur,BSEE,4,Woman,Enrolled
 2020-9832,Alexei Juan Okafor,BSCS,4,Other,Enrolled
@@ -41,7 +40,7 @@ id_num,full_name,course,yr_lvl,gender,status
 2021-0884,Leonidas Juanovich,NONE,3,Man,Not Enrolled
 2021-2203,Isadora Khalilova,NONE,3,Other,Not Enrolled
 2021-2454,Azura Khalilova,BSEd,3,Non-binary,Enrolled
-2021-2723,Vladimir Juanovich,BSPolSci,3,Other,Enrolled
+2021-2723,Vladimir Juanovich,NONE,3,Other,Not Enrolled
 2021-4790,Anastasia Chioma,NONE,3,Other,Not Enrolled
 2021-4889,Natasha Petrovova,NONE,3,Woman,Not Enrolled
 2021-5528,Valentina Khalilova,NONE,3,Woman,Not Enrolled
@@ -52,7 +51,7 @@ id_num,full_name,course,yr_lvl,gender,status
 2021-7245,Nikolai Khalilovich,BSN,3,Man,Enrolled
 2021-7781,Ksenia Chioma,NONE,3,Other,Not Enrolled
 2021-8127,Yelena Juanovna,BSCS,3,Woman,Enrolled
-2021-8282,Yuliya Khalilova,BSPolSci,3,Woman,Enrolled
+2021-8282,Yuliya Khalilova,NONE,3,Woman,Not Enrolled
 2021-8424,Olga Chioma,NONE,3,Woman,Not Enrolled
 2021-8504,Ekaterina Petrovna,BSEE,3,Woman,Enrolled
 2021-9832,Dmitri Juanovich,BSCS,3,Other,Enrolled
@@ -62,7 +61,7 @@ id_num,full_name,course,yr_lvl,gender,status
 2022-0884,Joaquin Juanito,NONE,2,Man,Not Enrolled
 2022-2203,Isabel Khalilita,NONE,2,Other,Not Enrolled
 2022-2454,Amara Khalilita,BSEd,2,Non-binary,Enrolled
-2022-2723,Diego Juanito,BSPolSci,2,Other,Enrolled
+2022-2723,Diego Juanito,NONE,2,Other,Not Enrolled
 2022-4790,Anahi Chiomita,NONE,2,Other,Not Enrolled
 2022-4889,Natalia Petrovita,NONE,2,Woman,Not Enrolled
 2022-5528,Valeria Khalilita,NONE,2,Woman,Not Enrolled
@@ -73,7 +72,7 @@ id_num,full_name,course,yr_lvl,gender,status
 2022-7245,Nadia Khalilita,BSN,2,Man,Enrolled
 2022-7781,Karla Chiomita,NONE,2,Other,Not Enrolled
 2022-8127,Yasmin Juanita,BSCS,2,Woman,Enrolled
-2022-8282,Yasmina Khalilova,BSPolSci,2,Woman,Enrolled
+2022-8282,Yasmina Khalilova,NONE,2,Woman,Not Enrolled
 2022-8424,Olivia Chiomita,NONE,2,Woman,Not Enrolled
 2022-8504,Elena Petrovita,BSEE,2,Woman,Enrolled
 2022-9832,Dario Juanito,BSCS,2,Other,Enrolled
@@ -82,7 +81,7 @@ id_num,full_name,course,yr_lvl,gender,status
 2023-0884,Joaquin Juanito,NONE,1,Man,Not Enrolled
 2023-2203,Isabel Khalilita,NONE,1,Other,Not Enrolled
 2023-2454,Amara Khalilita,BSEd,1,Non-binary,Enrolled
-2023-2723,Diego Juanito,BSPolSci,1,Other,Enrolled
+2023-2723,Diego Juanito,NONE,1,Other,Not Enrolled
 2023-4790,Anahi Chiomita,NONE,1,Other,Not Enrolled
 2023-4889,Natalia Petrovita,NONE,1,Woman,Not Enrolled
 2023-5528,Valeria Khalilita,NONE,1,Woman,Not Enrolled
@@ -92,9 +91,10 @@ id_num,full_name,course,yr_lvl,gender,status
 2023-6872,Iker Khalilito,NONE,1,Other,Not Enrolled
 2023-7245,Nadia Khalilita,BSN,1,Man,Enrolled
 2023-7781,Karla Chiomita,NONE,1,Other,Not Enrolled
-2023-8127,Yasmin Juanita,BSCS,1,Woman,Enrolled
-2023-8282,Yasmina Khalilova,BSPolSci,1,Woman,Enrolled
+2023-8281,Yasmina THe Second,NONE,3,Woman,Not Enrolled
+2023-8282,Yasmina Khalilova,NONE,1,Woman,Not Enrolled
 2023-8424,Olivia Chiomita,NONE,1,Woman,Not Enrolled
 2023-8504,Elena Petrovita,BSEE,1,Woman,Enrolled
 2023-9832,Dario Juanito,BSCS,1,Other,Enrolled
 2023-9844,Ivanna Iqbalita,NONE,1,Woman,Not Enrolled
+2023-9845,hihih,BSIT,3,Woman,Enrolled
