@@ -310,7 +310,6 @@ class Ui_MainWindow(object):
                     gender = row['gender']
                     status = row['status']
                     self.addStudent(id_num, full_name, course, year_level, gender, status)
-                    self.prompt("Now Editing Student %s, %s." % (id_num, full_name))
                     rows_total += 1
                 else:
                     # If the current student matches the one being edited, save its details
@@ -322,7 +321,7 @@ class Ui_MainWindow(object):
                         'gender': row['gender'],
                         'status': row['status']
                     }
-                    self.prompt("Now Editing Student %s, %s." % (found_student["id_number"], found_student["full_name"]))
+                    prompt = ("Now Editing Student %s, %s." % (found_student["id_number"], found_student["full_name"]))
                     student_edit_ui.setupUi(student_edit_widget, found_student['id_number'], found_student['full_name'],
                                             found_student['course'], found_student['year_level'], found_student['gender'],
                                             found_student['status'])
@@ -336,6 +335,7 @@ class Ui_MainWindow(object):
                     self.scroll_contents_layout.addWidget(student_edit_widget)
                     row_of_element = rows_total
 
+            self.prompt(prompt)
             scroll_bar = self.scrollArea.verticalScrollBar()
 
             if rows_total > 0:
@@ -431,6 +431,7 @@ class Ui_MainWindow(object):
                     course_edit_ui.btn_cancel.clicked.connect(self.list)
                     self.scroll_contents_layout.addWidget(course_edit_widget)
                     row_of_element = rows_total
+                    self.prompt("Now Editing Course "+ course_code + ".")
                 else:
                     # Otherwise, add the course item
                     self.addCourse(course_code, course_description)
